@@ -191,3 +191,4 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.lmk.kill_heaviest_task=true \
     ro.lmk.use_psi=true 
 ```
+> 參考: https://source.android.google.cn/devices/tech/perf/lmkd?hl=zh-cn
