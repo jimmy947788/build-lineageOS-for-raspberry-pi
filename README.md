@@ -168,6 +168,7 @@ private void applyKeyguardFlags(State state) {
 ```
 
 ### 低内存终止守护进程 (lmkd)
+> [!CAUTION] 不推荐修改
 #### 1.使用用户空间 lmkd
 ```bash
 # 修改檔案: kernel/brcm/rpi3/arch/arm/configs/lineageos_rpi3_defconfig
