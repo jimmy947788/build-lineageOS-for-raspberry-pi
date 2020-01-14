@@ -39,12 +39,3 @@ print_info "now -> $PWD"
 source build/envsetup.sh
 lunch lineage_rpi3-$buildType
 make -j$useBuildCore kernel ramdisk systemimage vendorimage
-
-
-print_title "Step5. packing android lineageOS image"
-cd $lineageOSFolder/device/brcm/rpi3/
-print_info "now -> $PWD"
-sudo sh mkimg.sh
-rm $workerFolder/*.img
-mv *.img $workerFolder/
-#sudo dd if=lineage-15.1-20200111-rpi3.img of=/dev/sde status=progress bs=4M
