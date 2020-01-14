@@ -36,6 +36,7 @@ $jackAdminPath kill-server && $jackAdminPath start-server
 print_title "Step4. compiler android lineageOS"
 cd $lineageOSFolder
 print_info "now -> $PWD"
+make clean
 source build/envsetup.sh
 lunch lineage_rpi3-$buildType
 make -j$useBuildCore kernel ramdisk systemimage vendorimage

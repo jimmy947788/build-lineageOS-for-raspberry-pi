@@ -12,4 +12,11 @@ DATE=`date +%Y%m%d`
 IMGNAME=$lineageVersion-$DATE-rpi3.img
 mv $IMGNAME $workerFolder/$IMGNAME
 
-dd if=$workerFolder/$IMGNAME of=/dev/sde status=progress bs=4M
+DEVICE_PATH="/dev/sde"
+read -p "Are sure SDCard is $DEVICE_PATH ? (y/n)" confirm
+if [ "$confirm" = "n" ]
+then
+    read -p "please keyin device (/dev/sdX)" confirm DEVICE_PATH
+fi
+
+dd if=$workerFolder/$IMGNAME of=$DEVICE_PATH status=progress bs=4M

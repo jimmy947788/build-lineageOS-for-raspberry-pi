@@ -1,74 +1,42 @@
-# build-lineageOS-rpi3
+# 針對raspberry pi 3 編譯 LineageOS 
+## Host 開發環境
+1. Ubuntu 18.04  kernel 5.0.0-37-generic
+2. 安裝套件
+```bash
+sudo apt-get update 
+sudo apt-get install bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf lib32ncurses5-dev lib32readline-dev lib32z1-dev libesd0-dev liblz4-tool libncurses5-dev libsdl1.2-dev libssl-dev libwxgtk3.0-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev python-mako imagemagick openjdk-8-jdk gcc-arm-linux-gnueabihf
+```
+3. OpenJDK version 1.8.0_232
+## Target 運行環境
+1. Raspberry Pi 3 (mdoel B)
+2. ARMv7l 架構 bcm2837rifbg
+3. LineageOS-1.5 (Android 8) [參考](https://konstakang.com/devices/rpi3/LineageOS15.1/)
+
 ## Build ImageMagic
+這是一套繪圖軟體，LineageOS 使用它來產生一些動畫效果，在編譯階段會需要用到(但是我個人感覺沒用到)
 ```bash
 $> ./01_build-ImageMagick.sh
 ```
 
-## sync lineageOS source code
+## sync LineageOS source code
+去google的repo用git下載全套程式碼 *(大約66 GB)*
 ```bash
-$> ./02_sync-android-rpi3.sh
+$> ./02-sync-lineageOS.sh
 ```
+> 可以到./config.sh 的**lineageVersion**變數去改下載版本
 
-## build lineageOS source code
+## build LineageOS source code
+編譯出 zImage system.img ramdisk.img vendor.img
+* **zImage** 這是linux kernel程式碼提供的版本為 4.14.66-v7
+* **system.img** 這是Android系統資料 裏面會用到到檔案&應用程式&函數庫
+* **ramdisk.img** 這是Android的root filesystem
+* **vendor.img** 這是OEM廠商私有的映像檔，主要包含和硬體相關的程式及函式庫，以及硬體啟動時所需的設定檔
 ```bash
-$> ./03_build-android-rpi3.sh
+$> ./03-build-lineageOS.sh
 ```
-
-### 移除預設APP
-#### 1. 定義編譯模組remove_unused_module
-```bash
-# 修改檔案: device/brcm/rpi3/Android.mk
-
-#加入下面區段
-include $(CLEAR_VARS)
-LOCAL_MODULE := remove_unused_module
-LOCAL_MODULE_TAGS := optional
-
-LOCAL_MODULE_CLASS := FAKE
-LOCAL_MODULE_SUFFIX := $(COMMON_ANDROID_PACKAGE_SUFFIX)
-
-#要移除的APP
-LOCAL_OVERRIDES_PACKAGES += \
-   Contacts \
-   Email \
-   DeskClock \
-   Calendar \
-   CalendarProvider \
-   Contacts \
-   Email \
-   vr \
-   Telecom \
-   TeleService \
-   PrintSpooler \
-   PrintRecommendationService \
-   PicoTts \
-   MmsService \
-   AudioFX \
-   ExactCalculator \
-   Camera2 \
-   Gallery2 \
-   Recorder \
-   Eleven
-
-include $(BUILD_SYSTEM)/base_rules.mk
-
-$(LOCAL_BUILT_MODULE):
-	$(hide) echo "Fake: $@"
-	$(hide) mkdir -p $(dir $@)
-	$(hide) touch $@
-
-PACKAGES.$(LOCAL_MODULE).OVERRIDES := $(strip $(LOCAL_OVERRIDES_PACKAGES))
-```
-#### 2. 加入編譯模組remove_unused_module
-```bash
-# 修改檔案: device/brcm/rip3/rpi3.mk
-#加入remove_unused_module
-PRODUCT_PACKAGES += remove_unused_module
-```
-> Android.mk 裡面的變數LOCAL_OVERRIDES_PACKAGES 就是要移除的APPS
 
 ### linux kernel compile config
-> kernel/brcm/rpi3/arch/arm/configs/lineageos_rpi3_defconfig
+> kernel/brcm/rpi3/arch/arm/configs/LineageOS_rpi3_defconfig
 
 
 ### 設定國家和時區
@@ -171,7 +139,7 @@ private void applyKeyguardFlags(State state) {
 > [!CAUTION] 不推荐修改
 #### 1.使用用户空间 lmkd
 ```bash
-# 修改檔案: kernel/brcm/rpi3/arch/arm/configs/lineageos_rpi3_defconfig
+# 修改檔案: kernel/brcm/rpi3/arch/arm/configs/LineageOS_rpi3_defconfig
 CONFIG_ANDROID_LOW_MEMORY_KILLER=n
 CONFIG_MEMCG=y
 CONFIG_MEMCG_SWAP=y
