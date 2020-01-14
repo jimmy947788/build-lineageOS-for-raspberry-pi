@@ -12,4 +12,4 @@ DATE=`date +%Y%m%d`
 IMGNAME=$lineageVersion-$DATE-rpi3.img
 mv $IMGNAME $workerFolder/$IMGNAME
 
-#sudo dd if=lineage-15.1-*-rpi3.img of=/dev/sde status=progress bs=4M
+dd if=$workerFolder/$IMGNAME of=/dev/sde status=progress bs=4M
