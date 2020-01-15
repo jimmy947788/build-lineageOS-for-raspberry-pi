@@ -12,13 +12,13 @@ sudo apt-get install bc bison build-essential ccache curl flex g++-multilib gcc-
 2. ARMv7l 架構 bcm2837rifbg
 3. LineageOS-1.5 (Android 8) [參考](https://konstakang.com/devices/rpi3/LineageOS15.1/)
 
-## Build ImageMagic
+## 01. 建制ImageMagic
 這是一套繪圖軟體，LineageOS 使用它來產生一些動畫效果，在編譯階段會需要用到(但是我個人感覺沒用到)
 ```bash
 $> ./01_build-ImageMagick.sh
 ```
 
-## sync LineageOS source code
+## 02. 同步官方LineageOS程式碼
 去google的repo用git下載全套程式碼 *(大約66 GB)*
 ```bash
 $> ./02-sync-lineageOS.sh

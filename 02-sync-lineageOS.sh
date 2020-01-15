@@ -36,4 +36,4 @@ print_title "Step3. Downloading manifest for rpi3"
 curl --create-dirs -L -o .repo/local_manifests/manifest_brcm_rpi3.xml -O -L https://raw.githubusercontent.com/lineage-rpi/android_local_manifest/$lineageVersion/manifest_brcm_rpi3.xml
 
 print_title "Step4. Downloading the Android source tree"
-repo sync -j32 #--force-sync external/swiftshader
+repo sync -j32
