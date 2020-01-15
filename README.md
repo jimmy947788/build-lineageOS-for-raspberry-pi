@@ -75,5 +75,4 @@ $> ./06-build-lineageOS.sh
 - [修改Android系統設定](lesson/01-modify-android-property.md)
 - [不要安裝內建APPS](lesson/02-dont_install_default_apps.md)
 - [預設啟用root權限](lesson/03-default-enable-roots.md)
-
-
+- [預設wifi連線密碼](lesson/04.default_wifi_setting.md)
