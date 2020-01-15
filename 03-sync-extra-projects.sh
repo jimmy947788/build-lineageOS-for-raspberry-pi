@@ -17,7 +17,7 @@ print_title "Step1. copy manifest to source code repo"
 print_info "copy $MANIFETS.xml to $lineageOSFolder/.repo/local_manifests/"
 cp ./local_manifests/$MANIFETS.xml $lineageOSFolder/.repo/local_manifests/$MANIFETS.xml
 
-print_title "Step4. Downloading extra projects"
+print_title "Step2. Downloading extra projects"
 cd $lineageOSFolder
 print_info "now -> $PWD"
 repo sync -j32

@@ -17,13 +17,19 @@ sudo apt-get install bc bison build-essential ccache curl flex g++-multilib gcc-
 ```bash
 $> ./01_build-ImageMagick.sh
 ```
-
-## 02. 同步官方LineageOS程式碼
+## 02. 下載官方LineageOS程式碼
 去google的repo用git下載全套程式碼 *(大約66 GB)*
 ```bash
 $> ./02-sync-lineageOS.sh
 ```
 > 可以到./config.sh 的**lineageVersion**變數去改下載版本
+
+## 03. 下載LineageOS擴充專案
+可以定義manifests.xml來擴充lineageOS所需要的專案/模組
+```bash
+$> ./03-sync-extra-projects.sh
+```
+>這裡預設是用[lineage-rpi](https://github.com/lineage-rpi/android_local_manifest)專為raspberry pi 3所提供的manifest_brcm_rpi3.xml
 
 ## build LineageOS source code
 編譯出 zImage system.img ramdisk.img vendor.img
