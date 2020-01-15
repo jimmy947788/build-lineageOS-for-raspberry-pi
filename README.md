@@ -18,7 +18,7 @@ sudo apt-get install bc bison build-essential ccache curl flex g++-multilib gcc-
 2. ARMv7l 架構 bcm2837rifbg
 3. LineageOS-1.5 (Android 8) [參考](https://konstakang.com/devices/rpi3/LineageOS15.1/)
 
-## 01. 建制 ImageMagic
+## 01. ImageMagic
 
 這是一套繪圖軟體，LineageOS 使用它來產生一些動畫效果，在編譯階段會需要用到(但是我個人感覺沒用到)
 
@@ -51,16 +51,16 @@ $> ./03-sync-extra-projects.sh
 
 程式碼補丁必須要再編之前先打上,補丁都放在 patches 資料夾內
 
-- **generic-keyboard-layout** 修改鍵盤layout
+- **generic-keyboard-layout** 修改鍵盤layout 
 - **disable-adb-authentication** 停用ADB驗證
 ```bash
 $> ./04-patches-lineageOS.sh
 ```
 > 這裡是用[lineage-rpi](https://github.com/lineage-rpi/android_local_manifest)題供的補丁
 
-## build LineageOS source code
+## 06. 建制 LineageOS 程式碼
 
-編譯出 zImage system.img ramdisk.img vendor.img
+編譯產出
 
 - **zImage** 這是 linux kernel 程式碼提供的版本為 4.14.66-v7
 - **system.img** 這是 Android 系統資料 裏面會用到到檔案&應用程式&函數庫
@@ -68,145 +68,12 @@ $> ./04-patches-lineageOS.sh
 - **vendor.img** 這是 OEM 廠商私有的映像檔，主要包含和硬體相關的程式及函式庫，以及硬體啟動時所需的設定檔
 
 ```bash
-$> ./03-build-lineageOS.sh
+$> ./06-build-lineageOS.sh
 ```
 
-### linux kernel compile config
+## 客製化修改
+- [修改Android系統設定](lesson/01-modify-android-property.md)
+- [不要安裝內建APPS](lesson/02-dont_install_default_apps.md)
+- [預設啟用root權限](lesson/03-default-enable-roots.md)
 
-> kernel/brcm/rpi3/arch/arm/configs/LineageOS_rpi3_defconfig
 
-### 設定國家和時區
-
-```bash
-# 修改檔案: device/brcm/rip3/system.prop
-# 加入設定國家和時區
-persist.sys.language=zh
-persist.sys.country=TW
-persist.sys.localevar=
-persist.sys.timezone=Asia/Taipei
-ro.product.locale.language=zh
-ro.product.locale.region=CN
-```
-
-### 啟用 root 權限
-
-#### 1.修改 ro.adb.secure 和 ro.secure 属性
-
-```bash
-# 修改檔案: build/core/main.mk
-
-# Target is secure in user builds.
-ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0 #改成0
-ADDITIONAL_DEFAULT_PROPERTIES += security.perf_harden=1
-
-ifeq ($(user_variant),user)
-    ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0 #改成0
-endif
-
-ifeq ($(user_variant),userdebug)
-    # Pick up some extra useful tools
-    tags_to_install += debug
-else
-    # Disable debugging in plain user builds.
-    #enable_target_debugging := #註解掉
-endif
-```
-
-#### 2.修改 selinux
-
-```cpp
-// 修改檔案: system/core/init/init.cpp
-
-/*
-static selinux_enforcing_status selinux_status_from_cmdline() {
-    ...
-*/
-static bool selinux_is_enforcing(void)
-{
-    return false; #新增
-}
-```
-
-#### 3.修改 adb 模块的 android.mk 文件
-
-```bash
-# 修改檔案: system/core/adb/Android.mk
-
-#LOCAL_CFLAGS += -DALLOW_ADBD_NO_AUTH=$(if $(filter userdebug eng,$(TARGET_BUILD_VARIANT)),1,0)
-LOCAL_CFLAGS += -DALLOW_ADBD_NO_AUTH=$(if $(filter user userdebug eng,$(TARGET_BUILD_VARIANT)),1,0
-
-#ifneq (,$(filter userdebug eng,$(TARGET_BUILD_VARIANT)))
-ifneq (,$(filter user userdebug eng,$(TARGET_BUILD_VARIANT)))
-```
-
-#### 4.啟動圖形加速
-
-```bash
-# 修改檔案:  device/brcm/rpi3/boot/config.txt
-# Graphics acceleration
-#dtoverlay=vc4-fkms-v3d,cma-256
-dtoverlay=vc4-kms-v3d,cma-256
-mask_gpu_interrupt0=0x400
-avoid_warnings=2
-```
-
-#### 4.關閉動態桌布
-
-```xml
-<!--修改檔案: frameworks/base/core/res/res/values/config.xml  -->
-<!-- True if WallpaperService is enabled -->
-<bool name="config_enableWallpaperService">false</bool>
-```
-
-```java
-//修改檔案: frameworks/base/packages/SystemUI/src/com/android/systemui/statusbar/phone/StatusBarWindowManager.java
-private void applyKeyguardFlags(State state) {
-    /*
-    if (state.keyguardShowing) {
-        mLpChanged.privateFlags |= WindowManager.LayoutParams.PRIVATE_FLAG_KEYGUARD;
-    } else {
-        mLpChanged.privateFlags &= ~WindowManager.LayoutParams.PRIVATE_FLAG_KEYGUARD;
-    }
-
-    if (state.keyguardShowing && !state.backdropShowing && !state.dozing) {
-        mLpChanged.flags |= WindowManager.LayoutParams.FLAG_SHOW_WALLPAPER;
-    } else {
-        mLpChanged.flags &= ~WindowManager.LayoutParams.FLAG_SHOW_WALLPAPER;
-    }*/
-    // we don't need keyguard display
-    mLpChanged.flags &= ~WindowManager.LayoutParams.FLAG_SHOW_WALLPAPER;
-    mLpChanged.privateFlags &= ~WindowManager.LayoutParams.PRIVATE_FLAG_KEYGUARD;
-}
-```
-
-### 低内存终止守护进程 (lmkd)
-
-> [!CAUTION] 不推荐修改
-
-#### 1.使用用户空间 lmkd
-
-```bash
-# 修改檔案: kernel/brcm/rpi3/arch/arm/configs/LineageOS_rpi3_defconfig
-CONFIG_ANDROID_LOW_MEMORY_KILLER=n
-CONFIG_MEMCG=y
-CONFIG_MEMCG_SWAP=y
-CONFIG_PSI=y
-```
-
-#### 2.配置 lmkd
-
-```bash
-# 修改檔案: device/brcm/rpi3/rpi3.mk
-#配置 lmkd
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.lmk.low=1001 \
-    ro.lmk.medium=800 \
-    ro.lmk.critical=0 \
-    ro.lmk.critical_upgrade=false \
-    ro.lmk.upgrade_pressure=100 \
-    ro.lmk.downgrade_pressure=100 \
-    ro.lmk.kill_heaviest_task=true \
-    ro.lmk.use_psi=true
-```
-
-> 參考: https://source.android.google.cn/devices/tech/perf/lmkd?hl=zh-cn
