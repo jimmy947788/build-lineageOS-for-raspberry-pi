@@ -56,6 +56,7 @@ $> ./03-sync-extra-projects.sh
 ```bash
 $> ./04-patches-lineageOS.sh
 ```
+> 這裡是用[lineage-rpi](https://github.com/lineage-rpi/android_local_manifest)題供的補丁
 
 ## build LineageOS source code
 
