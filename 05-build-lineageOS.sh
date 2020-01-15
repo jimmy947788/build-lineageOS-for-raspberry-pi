@@ -25,5 +25,5 @@ cd $lineageOSFolder
 print_info "now -> $PWD"
 make clean
 source build/envsetup.sh
-lunch lineage_rpi3-$buildType
+lunch $buildTarget-$buildType
 make -j$useBuildCore kernel ramdisk systemimage vendorimage
