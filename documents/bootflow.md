@@ -13,8 +13,8 @@ Everything is run on the GPU until kernel.img   載入到ARM。
 
 我發現這个圖非常有用：
 
-![asd](documents/images/004.png)
-![asd](documents/images/BCM2835-Memory-Map-Large.png)
+![asd](/documents/images/004.png)
+![asd](/documents/images/BCM2835-Memory-Map-Large.png)
 
 #### 參考
 [Raspberry Pi Releases BCM2835 Datasheet for ARM Peripherals](https://www.cnx-software.com/2012/02/07/raspberry-pi-releases-bcm2835-datasheet-for-arm-peripherals/) 
