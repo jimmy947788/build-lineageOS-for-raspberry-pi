@@ -76,4 +76,7 @@ $> ./06-build-lineageOS.sh
 - [不要安裝內建APPS](lesson/02-dont_install_default_apps.md)
 - [預設啟用root權限](lesson/03-default-enable-roots.md)
 - [預設wifi連線密碼](lesson/04.default_wifi_setting.md)
-- [開機不要執行設定精靈](lesson/05-disable-setupwizard.md)
+- [開機不要執行設定精靈](lesson/05-disable-setupwizard.md) 
+
+## 其他文件
+- [開機啟動流程](documents/bootflow.md)
