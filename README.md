@@ -14,7 +14,7 @@ sudo apt-get install bc bison build-essential ccache curl flex g++-multilib gcc-
 
 ## Target 運行環境
 
-1. Raspberry Pi 3 (mdoel B)
+1. Raspberry Pi Model 3B  V1.2 
 2. ARMv7l 架構 bcm2837rifbg
 3. LineageOS-1.5 (Android 8) [參考](https://konstakang.com/devices/rpi3/LineageOS15.1/)
 
