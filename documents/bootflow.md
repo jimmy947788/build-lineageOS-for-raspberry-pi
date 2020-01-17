@@ -1,20 +1,29 @@
 ## 開機啟動流程
 
-### bootloader
-Raspberry Pi的啟動順序基本上是這樣的：
+#### PowerOn
+1. BCM2835 SoC 通電啟動 
+2. ARM core,SDRAM並未啟動
+3. GPU先啟動先執行first stage bootloader
 
-第1階段啟動位於片上ROM中.在L2快取中載入第2階段
+#### bootloader stage 1 (GPU)
+3. 讀取SD卡FAT32的boot磁碟分區bootcode.bin
+4. 載入到L2 Cache 並且執行
+> 這部份流程都寫在BCM2835無法修改
 
-第二階段是 bootcode.bin .啟用S​​DRAM並載入Stage 3
+#### bootloader stage 2 (bootcode.bin)
+1. 啟動SDRAM
+2. 讀SD卡中FAT32第1分區start.elf並且執行
+>  bootcode.bin (bootloader stage 2)
 
-第3階段是 loader.bin .它知道 .elf   格式和載入 start.elf start.elf   載入 kernel.img .然後它還讀取 config.txt ， cmdline.txt   和 bcm2835.dtb 如果dtb檔案存在，則会在 0×100中載入   &安培; kernel @ 0×8000 如果是 disable_commandline_tags   設置它載入內核@ 0×0 否則它会載入kernel @ 0×8000   並將ATAGS放在 0×100 kernel.img   然後在ARM上執行。
+#### bootloader stage 3 (start.elf)
+1. ARM core 啟動(允许GPU啟動CPU)
+2. fixup.dat用於配置GPU和CPU之間的SDRAM分區,並且依照fixup.dat內的設定載入zImage(linux kernel)
+3. 讀取設定檔config.txt及 cmdline.txt, 依設定執行kernel
+> start.elf (GPU firmware) 
 
-Everything is run on the GPU until kernel.img   載入到ARM。
 
-我發現這个圖非常有用：
-
-![asd](/documents/images/004.png)
-![asd](/documents/images/BCM2835-Memory-Map-Large.png)
-
+![asd](/documents/images/zo803Hq.png)
 #### 參考
-[Raspberry Pi Releases BCM2835 Datasheet for ARM Peripherals](https://www.cnx-software.com/2012/02/07/raspberry-pi-releases-bcm2835-datasheet-for-arm-peripherals/) 
+1. [Raspberry Pi Releases BCM2835 Datasheet for ARM Peripherals](https://www.cnx-software.com/2012/02/07/raspberry-pi-releases-bcm2835-datasheet-for-arm-peripherals/) 
+2. [Boot sequence](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bootmodes/bootflow.md)
+3. [git raspberrypi firmware](https://github.com/raspberrypi/firmware)
