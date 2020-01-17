@@ -30,6 +30,14 @@ Raspberry Pi 是使用GPU來做bootloader，和其他Embedded板子用CPU來做b
 4. 啟動 ARM core CPU
 > start.elf (GPU firmware) 
 
+#### kernel 
+1. **kernel_init** kernel\brcm\rpi3\init\main.c
+
+https://blog.csdn.net/qq_19923217/article/details/81240302
+https://blog.csdn.net/qq_19923217/article/details/82014989
+
+https://blog.csdn.net/salmon_zhang/article/details/93639941
+
 https://www.cntofu.com/book/46/raspberry_pi/buildroot_study_-_jian_li_zi_ji_de_zuo_ye_xi_tong.md
 
 ![asd](/documents/images/zo803Hq.png)
