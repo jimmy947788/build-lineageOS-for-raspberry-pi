@@ -79,4 +79,5 @@ $> ./06-build-lineageOS.sh
 - [開機不要執行設定精靈](lesson/05-disable-setupwizard.md) 
 
 ## 其他文件
+- [BCM2835-ARM-Peripherals](documents\BCM2835-ARM-Peripherals.pdf)
 - [開機啟動流程](documents/bootflow.md)
