@@ -7,23 +7,26 @@ Raspberry Pi 是使用GPU來做bootloader，和其他Embedded板子用CPU來做b
 #### PowerOn
 1. BCM2835 SoC 通電啟動 
 2. CPU(ARM core),SDRAM並未啟動
-3. 啟動GPU上的RISC core來負責bootloader
-4. 執行bootloader stage 1
+3. 啟動GPU上的RISC core來負責bootloader運作
+4. 跳到bootloader stage 1
 
 #### bootloader stage 1 (GPU)
-1. 讀取SD卡FAT32的boot磁碟分區bootcode.bin載入到GPU L2 Cache 
-2. 執行bootcode.bin
+1. 讀取SD卡FAT32的boot磁碟分區
+2. 載入bootcode.bin到GPU L2 Cache 並且執行 
+2. 跳到bootloader stage 2
 > 這部份流程都寫在BCM2835無法修改
 
 #### bootloader stage 2 (bootcode.bin)
 1. 啟動SDRAM
-2. 讀SD卡中FAT32第1分區start.elf並且執行
+2. 讀取SD卡FAT32的boot磁碟分區
+3. 載入start.elf並且執行
 >  bootcode.bin (bootloader stage 2)
 
 #### bootloader stage 3 (start.elf)
-1. 讀取fixup.dat用於配置GPU和CPU之間的SDRAM分區,重新整理GPU和CPU的記憶體因為接下來要準備轉移給CPU去運作系統了。(也配置kernel要使用的空間)
-2. 讀取config.txt設定檔，把config.txt當作BIOS初始化硬體的參數[參考](https://www.raspberrypi.org/documentation/configuration/config-txt/)
-3. 執行zImage(linux kernel)kernel透過cmdline.txt傳遞给內核的引數
+1. 載入fixup.dat用於配置GPU和CPU之間的SDRAM分區,重新整理GPU和CPU的記憶體因為接下來要準備轉移給CPU去運作系統了。(也配置zImage要使用的空間)
+2. 載入config.txt設定檔，把config.txt當作BIOS初始化硬體的參數[參考](https://www.raspberrypi.org/documentation/configuration/config-txt/)
+3. 載入cmdline.txt要把參數傳遞给kernel
+4. 載入zImage(linux kernel)
 4. 啟動 ARM core CPU
 > start.elf (GPU firmware) 
 
