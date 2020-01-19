@@ -80,4 +80,5 @@ $> ./06-build-lineageOS.sh
 
 ## 其他文件
 - [BCM2835-ARM-Peripherals](documents/BCM2835-ARM-Peripherals.pdf)
-- [開機啟動流程](documents/bootflow.md)
+- [linux開機啟動流程](documents/linux-boot-process.md)
+- [android開機啟動流程](documents/android-boot-process.md)
