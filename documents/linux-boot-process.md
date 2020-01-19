@@ -27,23 +27,27 @@ Raspberry Pi 是使用GPU來做bootloader，和其他Embedded板子用CPU來做b
 2. 載入config.txt設定檔，把config.txt當作BIOS初始化硬體的參數[參考](https://www.raspberrypi.org/documentation/configuration/config-txt/)
 3. 載入cmdline.txt要把參數傳遞给kernel
 4. 載入zImage(linux kernel)
-4. 啟動 ARM core CPU
+5. 啟動 ARM core CPU
+6. 進入linux kernel
 > start.elf (GPU firmware) 
 
-#### kernel 
-1. **kernel_init** kernel\brcm\rpi3\init\main.c
+#### linux kernel
+1. kernel 透過 cmdline.txt的參數initrd提供的位址去抓取ramdisk.img
+2. kernel 掛載基本檔案系統預備提供給Android使用
+3. kernel 掛載完成檔案系統後就會先執行init這隻程式(kernel\brcm\rpi3\init\main.c)
 
-https://blog.csdn.net/qq_19923217/article/details/81240302
-https://blog.csdn.net/qq_19923217/article/details/82014989
 
-https://blog.csdn.net/salmon_zhang/article/details/93639941
 
-https://www.cntofu.com/book/46/raspberry_pi/buildroot_study_-_jian_li_zi_ji_de_zuo_ye_xi_tong.md
+
+
+
+
 
 ![asd](/documents/images/zo803Hq.png)
 #### 參考
-1. [Raspberry Pi Releases BCM2835 Datasheet for ARM Peripherals](https://www.cnx-software.com/2012/02/07/raspberry-pi-releases-bcm2835-datasheet-for-arm-peripherals/) 
-2. [Boot sequence](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bootmodes/bootflow.md)
-3. [git raspberrypi firmware](https://github.com/raspberrypi/firmware)
-4. [BARE METAL RASPBERRY PI 3B+: NETWORK BOOT](https://metebalci.com/blog/bare-metal-rpi3-network-boot/)
-5. [The boot folder](https://www.raspberrypi.org/documentation/configuration/boot_folder.md)
+- [Raspberry Pi Releases BCM2835 Datasheet for ARM Peripherals](https://www.cnx-software.com/2012/02/07/raspberry-pi-releases-bcm2835-datasheet-for-arm-peripherals/) 
+- [Boot sequence](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bootmodes/bootflow.md)
+- [git raspberrypi firmware](https://github.com/raspberrypi/firmware)
+- [BARE METAL RASPBERRY PI 3B+: NETWORK BOOT](https://metebalci.com/blog/bare-metal-rpi3-network-boot/)
+- [The boot folder](https://www.raspberrypi.org/documentation/configuration/boot_folder.md)
+- [buildRoot study - 建立自己的作業系統](https://www.cntofu.com/book/46/raspberry_pi/buildroot_study_-_jian_li_zi_ji_de_zuo_ye_xi_tong.md)

@@ -30,26 +30,5 @@ public void systemReady(final Runnable goingCallback, TimingsTraceLog traceLog) 
             startHomeActivityLocked(currentUserId, "systemReady");
 ```
 
-```bash
-# AOSP修改檔案: build\core\main.mk
-
-#內容如下
-## eng ##
-
-ifeq ($(TARGET_BUILD_VARIANT),eng)
-tags_to_install := debug eng
-ifneq ($(filter ro.setupwizard.mode=ENABLED, $(call collapse-pairs, $(ADDITIONAL_BUILD_PROPERTIES))),)
-  # Don't require the setup wizard on eng builds
-  ADDITIONAL_BUILD_PROPERTIES := $(filter-out ro.setupwizard.mode=%,\
-          $(call collapse-pairs, $(ADDITIONAL_BUILD_PROPERTIES))) \
-          ro.setupwizard.mode=DISABLE # 把OPTIONAL改成DISABLE
-endif
-ifndef is_sdk_build
-  # To speedup startup of non-preopted builds, don't verify or compile the boot image.
-  ADDITIONAL_BUILD_PROPERTIES += dalvik.vm.image-dex2oat-filter=verify-at-runtime
-endif
-endif
-
-```
 
 https://blog.csdn.net/zhuawalibai/article/details/80221370
