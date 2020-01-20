@@ -1,8 +1,17 @@
-### 停用桌布服務
+### 不要載入動態桌布
 
-AOSP修改檔案: frameworks\base\core\res\res\values\config.xml
-```xml
 
-    <!-- True if WallpaperService is enabled -->
-    <bool name="config_enableWallpaperService">false</bool>
+```java
+    //AOSP修改檔案: frameworks/base/services/core/java/com/android/server/wallpaper/WallpaperManagerService.java
+    
+    boolean bindWallpaperComponentLocked(ComponentName componentName, boolean force,
+            boolean fromUser, WallpaperData wallpaper, IRemoteCallback reply) {
+        if (DEBUG_LIVE) {
+            Slog.v(TAG, "bindWallpaperComponentLocked: componentName=" + componentName);
+        }
+
+        // rpi3 don't use WallpaperComponent"
+        Slog.v(TAG, "rpi3 don't use WallpaperComponent");
+        return false;
+    }
 ```

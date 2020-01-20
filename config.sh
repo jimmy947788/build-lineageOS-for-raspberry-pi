@@ -1,5 +1,5 @@
 #!/bin/bash
-workerFolder="/usr/developer/android-lineage-rpi"
+workerFolder="$HOME/android-lineage-rpi"
 imageMagickFolder="$workerFolder/ImageMagick"
 imageMagickBuildFolder="$imageMagickFolder/build"
 homeBinFolder="$HOME/bin"
