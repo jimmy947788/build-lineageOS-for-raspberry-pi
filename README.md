@@ -1,5 +1,5 @@
 # 用LineageOS編譯Android系統 
-一間客製化 Android ROM 的公司 Cyanogen 旗下產品CyanogenMod（常簡稱為「CM」）是一個基於Android行動裝置平台的開放程式碼系統，它在2016年12月Cyanogen公司突然宣布停止開發並關閉專案基礎設施後復刻而生。LineageOS於2016年12月24日正式啟動，其原始碼存放於[GitHub](https://github.com/LineageOS)。
+[Cyanogen](https://en.wikipedia.org/wiki/Cyanogen)是一間客製化 Android ROM 的公司，旗下產品[CyanogenMod](https://zh.wikipedia.org/wiki/CyanogenMod)（常簡稱為「CM」）是一個基於Android行動裝置平台的開放程式碼系統，它在2016年12月Cyanogen公司突然宣布停止開發並關閉專案基礎設施。LineageOS於2016年12月24日正式啟動就是復刻CyanogenMod，其原始碼存放於[GitHub](https://github.com/LineageOS)。
   
 ### **開發環境(Host)**
 1. 作業系統使用 Ubuntu 18.04
@@ -22,12 +22,14 @@
 - **Model:** Raspberry Pi Model 3B V1.2 
 - **SoC:** Broadcom BCM2837
 - **CPU:** ARM Cortex-A53 (64Bit)
-- **記憶體:** 1GB LPDDR2（和 GPU 共享）\
+- **記憶體:** 1GB LPDDR2（和 GPU 共享）
+- **OS:** lineage 15.1 (Android 8.1.0)\
 <img src="./documents/images/introduction-to-rpi-15-638.jpg" alt="Raspberry Pi 3 Block Diagram" width="400px"/>
 
-
-
 ### 下載 LineageOS 程式碼  
-
+1. 
 #### 參考文件
-[LineageOS-1.5 (Android 8)](https://konstakang.com/devices/rpi3/LineageOS15.1/)
+- [LineageOS 維基百科](https://zh.wikipedia.org/wiki/LineageOS)
+- [LineageOS 官方網頁](https://www.lineageos.org/)
+- [LineageOS Github](https://github.com/LineageOS/)
+- [Raspberry Pi 3 Model B+ 規格](https://www.raspberrypi.com.tw/10684/55/)
