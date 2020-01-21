@@ -74,12 +74,14 @@
    ```
 
 #### Repo 其他指令
-- 刪除分支 \
-`$ repo abandon <BRANCH_NAME>`
-- 列出分支 \
-`$ repo branches`
-- 新增分支 \
-`$ repo start <BRANCH_NAME> [<PROJECT_LIST>]`
+ - 刪除分支 \
+ `$ repo abandon <BRANCH_NAME>`
+ - 列出分支 \
+ `$ repo branches`
+ - 新增分支 \
+ `$ repo start <BRANCH_NAME> [<PROJECT_LIST>]`
+ - 切換分支 \
+ `$ repo checkout <BRANCH_NAME>` 
 
 - [Repo 命令参考资料](https://source.android.google.cn/setup/using-repo.html)
 #### 參考文件
