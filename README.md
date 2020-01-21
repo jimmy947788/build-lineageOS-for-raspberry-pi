@@ -22,8 +22,8 @@
 - **Model:** Raspberry Pi Model 3B V1.2 
 - **SoC:** Broadcom BCM2837
 - **CPU:** ARM Cortex-A53 (64Bit)
-- **記憶體:** 1GB LPDDR2（和 GPU 共享）
-![Raspberry Pi 3 Block Diagram](documents/images/introduction-to-rpi-15-638.jpg | width=319)
+- **記憶體:** 1GB LPDDR2（和 GPU 共享）\
+<img src="./documents/images/introduction-to-rpi-15-638.jpg" alt="Raspberry Pi 3 Block Diagram" width="400px"/>
 
 
 
