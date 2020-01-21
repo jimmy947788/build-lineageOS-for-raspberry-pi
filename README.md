@@ -40,10 +40,10 @@
 2. 初始化Repo client端
     ```bash
     # 建立程式碼目錄
-    $ mkdir ~/lineageOS-15.1
-    $ cd ~/lineageOS-15.1
+    $ mkdir ~/lineageOS
+    $ cd ~/lineageOS
     ```
-    > ~/lineageOS-15.1 是我的主要程式碼工作目錄，你們可以自己定義
+    > ~/lineageOS 是我的主要程式碼工作目錄，你們可以自己定義
     ```bash
     # 設定git名稱和信箱
     $ git config --global user.name "Your Name"
@@ -51,7 +51,7 @@
     # 在目前目錄初始化一個client端，指定repository分支lineage-15.1
     $ repo init -u git://github.com/LineageOS/android.git -b lineage-15.1
     ```
-    > repo init 會在~/lineageOS-15.1目錄下建立一個.repo/目錄，.repo/目錄下manifest.xml這個檔案就是[.repo/manifests/default.xml](manifests/default.xml)的連結，內容就包含了建構lineageOS所要用到的專案清單。
+    > repo init 會在~/lineageOS目錄下建立一個.repo/目錄，.repo/目錄下manifest.xml這個檔案就是[.repo/manifests/default.xml](manifests/default.xml)的連結，內容就包含了建構lineageOS所要用到的專案清單。
 3. 下載程式碼
    ```bash
    # 同步遠端程式碼到client端
@@ -61,15 +61,16 @@
 
 4. 下載raspberry pi 3需要的專案[manifest_brcm_rpi3.xml](manifests\manifest_brcm_rpi3.xml)
    ```bash
-   $ mkdir .repo/local_manifests #Repo 1.9.1 has a new feature.
+   $ mkdir .repo/local_manifests #Repo 1.9.1 has a new feature. 
    $ wget https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/manifests/manifest_brcm_rpi3.xml -O .repo/local_manifests/manifest_brcm_rpi3.xml
    $ repo sync -j32
    ```
+   > Repo 1.9.1 開始要把新增的manifest.xml放到.repo/local_manifests資料夾下面
 5. 建立一個新的分支 *(用這個分支開發)*
    ```bash
-   # 分支名稱:lineageOS-15.1-rpi3
+   # 分支名稱:lineageOS-rpi3
    # --all 新分支包含所有的專案
-   $ repo start lineageOS-15.1-rpi3 --all
+   $ repo start lineageOS-rpi3 --all
    ```
 
 #### Repo 其他指令
