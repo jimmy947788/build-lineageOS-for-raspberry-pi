@@ -1,8 +1,9 @@
-### use zrame swape
+### low ram 啟用zram
 
-#### 複寫系統low_ramg屬性
+#### 複寫系統low_ram屬性
 ```bash
 #AOSP修改檔案:device\brcm\rpi3\rpi3.mk
+# raspberry pi3 1G RAM low ram
 PRODUCT_PROPERTY_OVERRIDES += ro.config.low_ram=true
 ```
 
@@ -35,3 +36,5 @@ on fs
     write /proc/sys/vm/page-cluster 0
     write /proc/sys/vm/swappiness 100
 ```
+#### 參考
+- [lmkd 和 memcg](https://blog.csdn.net/pillarbuaa/article/details/79207036)

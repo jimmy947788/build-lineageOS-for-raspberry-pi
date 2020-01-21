@@ -2,7 +2,7 @@
 
 ### PrintManagerService
 ```java
-AOSP修改檔案: frameworks\base\services\java\com\android\server\SystemServer.java
+//AOSP修改檔案: frameworks\base\services\java\com\android\server\SystemServer.java
 
             //註解調不要啟動
             /*
@@ -15,6 +15,9 @@ AOSP修改檔案: frameworks\base\services\java\com\android\server\SystemServer.
 ```
 
 
+### 相關檔案
+- *註冊服務* frameworks\base\core\java\android\app\SystemServiceRegistry.java
+- *啟動服務*frameworks\base\services\java\com\android\server\SystemServer.java
 
-frameworks\base\services\java\com\android\server\SystemServer.java
-frameworks\base\core\java\android\app\SystemServiceRegistry.java
+#### 參考
+- [Android系统启动（四）-SystemServer篇](https://www.jianshu.com/p/c6f464457f4c)
