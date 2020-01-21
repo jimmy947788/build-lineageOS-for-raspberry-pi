@@ -34,3 +34,6 @@ on fs
     write /proc/sys/vm/page-cluster 0
     write /proc/sys/vm/swappiness 100
 ```
+
+lmkd 和 memcg
+https://blog.csdn.net/pillarbuaa/article/details/79207036
