@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
+    <remote name="lineage" fetch="https://github.com/lineage-rpi"/>
+
     <!-- Raspberry Pi 3 -->
-    <project path="device/brcm/rpi3" name="lineage-rpi/android_device_brcm_rpi3" />
-    <project path="kernel/brcm/rpi3" name="lineage-rpi/android_kernel_brcm_rpi3" />
-    <project path="vendor/brcm" name="lineage-rpi/proprietary_vendor_brcm" />
+    <project path="device/brcm/rpi3" name="lineage-rpi/android_device_brcm_rpi3" remote="lineage" />
+    <project path="kernel/brcm/rpi3" name="lineage-rpi/android_kernel_brcm_rpi3" remote="lineage" />
+    <project path="vendor/brcm" name="lineage-rpi/proprietary_vendor_brcm" remote="lineage" />
 
     <!-- LineageOS additions -->
-    <project path="external/i2c-tools" name="lineage-rpi/android_external_i2c-tools" />
+    <project path="external/i2c-tools" name="lineage-rpi/android_external_i2c-tools" remote="lineage" />
 
     <!-- LineageOS replacements -->
     <remove-project name="platform/external/swiftshader"/>
-    <project path="external/swiftshader" name="lineage-rpi/android_external_swiftshader" />
+    <project path="external/swiftshader" name="lineage-rpi/android_external_swiftshader" remote="lineage" />
 </manifest>

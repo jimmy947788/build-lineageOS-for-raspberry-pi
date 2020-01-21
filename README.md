@@ -51,13 +51,37 @@
     # 在目前目錄初始化一個client端，指定repository分支lineage-15.1
     $ repo init -u git://github.com/LineageOS/android.git -b lineage-15.1
     ```
-    > repo init 會在~/lineageOS-15.1目錄下建立一個.repo/目錄，其中manifest.xml這個檔案是[manifests/default.xml](manifests/default.xml)的連結，內容就包含了建構lineageOS所要用到的專案清單。
+    > repo init 會在~/lineageOS-15.1目錄下建立一個.repo/目錄，.repo/目錄下manifest.xml這個檔案就是[.repo/manifests/default.xml](manifests/default.xml)的連結，內容就包含了建構lineageOS所要用到的專案清單。
 3. 下載程式碼
    ```bash
    # 同步遠端程式碼到client端
    $ repo sync -j32 #-j32:是指用32條執行緒下載
    ```
    > 開始下載 repository 大約 66G
+
+4. 下載raspberry pi 3需要的專案
+   ```bash
+   $ mkdir .repo/local_manifests #Repo 1.9.1 has a new feature.
+   $ wget https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/manifests/manifest_brcm_rpi3.xml -O .repo/local_manifests/manifest_brcm_rpi3.xml
+   $ repo init -m manifest_brcm_rpi3.xml
+   $ repo sync -j32
+   ```
+5. 建立一個新的分支 *(用這個分支開發)*
+   ```bash
+   # 分支名稱:lineageOS-15.1-rpi3
+   # --all 新分支包含所有的專案
+   $ repo start lineageOS-15.1-rpi3 --all
+   ```
+
+#### Repo 其他指令
+- 刪除分支 \
+`$ repo abandon <BRANCH_NAME>`
+- 列出分支 \
+`$ repo branches`
+- 新增分支 \
+`$ repo start <BRANCH_NAME> [<PROJECT_LIST>]`
+
+- [Repo 命令参考资料](https://source.android.google.cn/setup/using-repo.html)
 #### 參考文件
 - [LineageOS 維基百科](https://zh.wikipedia.org/wiki/LineageOS)
 - [LineageOS 官方網頁](https://www.lineageos.org/)
