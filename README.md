@@ -59,7 +59,7 @@
    ```
    > 開始下載 repository 大約 66G
 
-4. 下載raspberry pi 3需要的專案
+4. 下載raspberry pi 3需要的專案[manifest_brcm_rpi3.xml](manifests\manifest_brcm_rpi3.xml)
    ```bash
    $ mkdir .repo/local_manifests #Repo 1.9.1 has a new feature.
    $ wget https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/manifests/manifest_brcm_rpi3.xml -O .repo/local_manifests/manifest_brcm_rpi3.xml
