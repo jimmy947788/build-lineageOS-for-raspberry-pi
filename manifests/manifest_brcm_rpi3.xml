@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
+    <!--
+    remote github已經是預設不用給了
+    <remote name="gitgub" fetch="https://github.com/"/>
+     -->
     <!-- Raspberry Pi 3 -->
     <project path="device/brcm/rpi3" name="lineage-rpi/android_device_brcm_rpi3" />
     <project path="kernel/brcm/rpi3" name="lineage-rpi/android_kernel_brcm_rpi3" />

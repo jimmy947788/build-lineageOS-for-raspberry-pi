@@ -87,3 +87,37 @@
     - [Raspberry Pi 3 Model B+ 規格](https://www.raspberrypi.com.tw/10684/55/)
     - [LineageOS的所有分支](https://github.com/LineageOS/android/branches/all)
     - [Repo 命令参考资料](https://source.android.google.cn/setup/using-repo.html)
+    - [Android Local Manifests机制的使用实践](https://duanqz.github.io/2016-04-15-Android-Local-Manifests-Practice)
+
+### 編譯 LineageOS 程式碼
+1. **設定compile cache**
+    ```bash
+    $ export USE_CCACHE=1
+    $ export CCACHE_DIR=$HOME/.ccache
+    $ ccache -M 50G
+    ```
+2. **給編譯時期更多記憶體**
+    ```bash
+    $ PATH=~/lineageOS/prebuilts/sdk/tools:$PATH
+    $ export JACK_SERVER_VM_ARGUMENTS="-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx4g"
+    $ jack-admin kill-server && jack-admin start-server
+    ```
+3. **載入編譯環境變數**
+    ```bash
+    $ source build/envsetup.sh
+    $ lunch lineage_rpi3-userdebug
+    ```
+    > eng：工程版本, user：发行版本, userdebug：部分调试版本
+
+4. **編譯全部專案**
+    ```bash
+    $ make -j12 kernel ramdisk systemimage vendorimage
+    ```
+5. **打包可以燒錄的映像檔**
+    ```bash
+    $ cd ~/lineageOS/device/brcm/rpi3/
+    $ sudo ./mkimg.sh
+    ```
+    
+#### 參考文件
+- [編譯版本 Using build variants](https://source.android.com/setup/develop/new-device#build-variants)
