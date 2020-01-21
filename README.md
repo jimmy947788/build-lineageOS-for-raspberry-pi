@@ -27,9 +27,42 @@
 <img src="./documents/images/introduction-to-rpi-15-638.jpg" alt="Raspberry Pi 3 Block Diagram" width="400px"/>
 
 ### 下載 LineageOS 程式碼  
-1. 
+1. 安裝Repo工具
+    ```bash
+    #建立bin目錄存放Repo
+    $ mkdir ~/bin
+    $ PATH=~/bin:$PATH
+    #下載Repo工具
+    $ curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+    $ chmod a+x ~/bin/repo
+    ```
+    > Repo 是google用來管理複合式程式碼的工具，一套Android裡面包含很多不同的專案構成
+2. 初始化Repo client端
+    ```bash
+    # 建立程式碼目錄
+    $ mkdir ~/lineageOS-15.1
+    $ cd ~/lineageOS-15.1
+    # 設定git名稱和信箱
+    $ git config --global user.name "Your Name"
+    $ git config --global user.email "you@example.com"
+    # 在目前目錄初始化一個client端
+    $ repo init -u git://github.com/LineageOS/android.git
+    ```
+    > ~/lineageOS-15.1 是我的主要程式碼工作目錄，你們可以自己定義
+
+    ```bash
+    # 在目前目錄初始化一個client端，指定repository分支lineage-15.1
+    $ repo init -u git://github.com/LineageOS/android.git -b lineage-15.1
+    ```
+    > LineageOS的所有分支 [all branch](https://github.com/LineageOS/android/branches/all)
+3. 下載程式碼
+   ```bash
+   # 同步遠端程式碼到client端
+   $ repo sync -j32 #-j32:是指用32條執行緒下載
+   ```
 #### 參考文件
 - [LineageOS 維基百科](https://zh.wikipedia.org/wiki/LineageOS)
 - [LineageOS 官方網頁](https://www.lineageos.org/)
+- [LineageOS 官方維基](https://wiki.lineageos.org/)
 - [LineageOS Github](https://github.com/LineageOS/)
 - [Raspberry Pi 3 Model B+ 規格](https://www.raspberrypi.com.tw/10684/55/)
