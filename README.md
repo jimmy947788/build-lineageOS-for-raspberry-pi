@@ -63,7 +63,6 @@
    ```bash
    $ mkdir .repo/local_manifests #Repo 1.9.1 has a new feature.
    $ wget https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/manifests/manifest_brcm_rpi3.xml -O .repo/local_manifests/manifest_brcm_rpi3.xml
-   $ repo init -m manifest_brcm_rpi3.xml
    $ repo sync -j32
    ```
 5. 建立一個新的分支 *(用這個分支開發)*
