@@ -13,7 +13,7 @@
     # 安裝
     $ sudo apt-get update 
     $ sudo apt-get install openjdk-8-jdk
-    # 如果你電腦有很多版本JAVA，設定要用哪一個版本的java
+    # 如果你電腦已經有安裝很多版本JDK，這裡指定要用哪一個版本的JDK
     $ sudo update-alternatives --config java
     ```
     
@@ -23,7 +23,7 @@
 - **SoC:** Broadcom BCM2837
 - **CPU:** ARM Cortex-A53 (64Bit)
 - **記憶體:** 1GB LPDDR2（和 GPU 共享）
-- **OS:** lineage 15.1 (Android 8.1.0)\
+- **OS:** lineage 15.1 (Android 8.1.0) \
 <img src="./documents/images/introduction-to-rpi-15-638.jpg" alt="Raspberry Pi 3 Block Diagram" width="400px"/>
 
 ### 下載 LineageOS 程式碼  
@@ -42,19 +42,16 @@
     # 建立程式碼目錄
     $ mkdir ~/lineageOS-15.1
     $ cd ~/lineageOS-15.1
+    ```
+    > ~/lineageOS-15.1 是我的主要程式碼工作目錄，你們可以自己定義
+    ```bash
     # 設定git名稱和信箱
     $ git config --global user.name "Your Name"
     $ git config --global user.email "you@example.com"
-    # 在目前目錄初始化一個client端
-    $ repo init -u git://github.com/LineageOS/android.git
-    ```
-    > ~/lineageOS-15.1 是我的主要程式碼工作目錄，你們可以自己定義
-
-    ```bash
     # 在目前目錄初始化一個client端，指定repository分支lineage-15.1
     $ repo init -u git://github.com/LineageOS/android.git -b lineage-15.1
     ```
-    > LineageOS的所有分支 [all branch](https://github.com/LineageOS/android/branches/all)
+    > repo init 會在~/lineageOS-15.1目錄下建立一個.repo/目錄，其中manifest.xml這個檔案內容就包含了建構lineageOS所要用到的專案清單。
 3. 下載程式碼
    ```bash
    # 同步遠端程式碼到client端
@@ -66,3 +63,4 @@
 - [LineageOS 官方維基](https://wiki.lineageos.org/)
 - [LineageOS Github](https://github.com/LineageOS/)
 - [Raspberry Pi 3 Model B+ 規格](https://www.raspberrypi.com.tw/10684/55/)
+- [LineageOS的所有分支](https://github.com/LineageOS/android/branches/all)
