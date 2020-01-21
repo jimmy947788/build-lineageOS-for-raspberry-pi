@@ -51,7 +51,7 @@
     # 在目前目錄初始化一個client端，指定repository分支lineage-15.1
     $ repo init -u git://github.com/LineageOS/android.git -b lineage-15.1
     ```
-    > repo init 會在~/lineageOS-15.1目錄下建立一個.repo/目錄，其中manifest.xml這個檔案內容就包含了建構lineageOS所要用到的專案清單。
+    > repo init 會在~/lineageOS-15.1目錄下建立一個.repo/目錄，其中manifest.xml這個檔案是[manifests/default.xml](manifests/default.xml)的連結，內容就包含了建構lineageOS所要用到的專案清單。
 3. 下載程式碼
    ```bash
    # 同步遠端程式碼到client端
