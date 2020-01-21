@@ -57,6 +57,7 @@
    # 同步遠端程式碼到client端
    $ repo sync -j32 #-j32:是指用32條執行緒下載
    ```
+   > 開始下載 repository 大約 66G
 #### 參考文件
 - [LineageOS 維基百科](https://zh.wikipedia.org/wiki/LineageOS)
 - [LineageOS 官方網頁](https://www.lineageos.org/)
