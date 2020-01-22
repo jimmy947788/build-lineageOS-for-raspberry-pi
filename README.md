@@ -29,3 +29,14 @@
 ### **操作說明文件**
 - [下載 LineageOS 程式碼](./documents/sync-lineageos-code.md)
 - [編譯 LineageOS 程式碼](./documents/build-lineageos-code.md)
+- 打上RPI3補丁
+
+### **Android客製化修改**
+- 修改預設系統設定
+- 不要安裝預設Apps
+- 預設啟動root權限
+- 略過開機設定精靈
+- 停用動態桌布
+- 低記憶體設備啟用ZRAM
+- 低記憶體設備啟用LMDK
+- 變更螢幕尺寸大小
