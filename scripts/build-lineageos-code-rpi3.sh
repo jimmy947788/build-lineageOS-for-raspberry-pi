@@ -1,13 +1,16 @@
 #!/bin/bash
 
+echo "Entry LineageOS source code folder: $LINEAGEOS_DIR"
+cd $LINEAGEOS_DIR
+
+OUT_DIR="$LINEAGEOS_DIR/out"
+RPI3_OUT_DIR="$OUT_DIR/target/product/rpi3"
 
 BUILD_IMG=$1
 if [ -z "$BUILD_IMG" ]
 then
     BUILD_IMG="ALL"
 fi
-OUT_DIR="$PWD/out"
-RPI3_OUT_DIR="$OUT_DIR/target/product/rpi3"
 
 if [[ "$BUILD_IMG" =~ ^(kernel|ramdisk|systemimage|vendorimage|ALL)$ ]]
 then
@@ -22,10 +25,13 @@ else
     exit 1
 fi
 
+
+echo "set compiler cache enable."
 export USE_CCACHE=1
 export CCACHE_DIR=$HOME/.ccache
 ccache -M 50G
 
+echo "set compiler use memory ."
 JACK_ADMIN_PATH="prebuilts/sdk/tools/jack-admin"
 export JACK_SERVER_VM_ARGUMENTS="-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx4g"
 $JACK_ADMIN_PATH kill-server && $JACK_ADMIN_PATH start-server
