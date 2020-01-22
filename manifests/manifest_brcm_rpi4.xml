@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+    <!--
+    remote github已經是預設不用給了
+    <remote name="gitgub" fetch="https://github.com/"/>
+     -->
+    <!-- Raspberry Pi 3 -->
+    <!-- 
+        <project path="device/brcm/rpi3" name="lineage-rpi/android_device_brcm_rpi3" />
+    -->
+    <project path="kernel/brcm/rpi4" name="lineage-rpi/android_kernel_brcm_rpi4" />
+    <project path="vendor/brcm" name="lineage-rpi/proprietary_vendor_brcm" />
+
+    <!-- LineageOS additions -->
+    <project path="external/i2c-tools" name="lineage-rpi/android_external_i2c-tools" />
+    <project path="external/libdrm" name="lineage-rpi/android_external_libdrm" />
+    <project path="external/mesa3d" name="lineage-rpi/android_external_mesa3d" />
+    <project path="external/minigbm" name="lineage-rpi/android_external_minigbm" />
+    <project path="external/drm/hwcomposer" name="lineage-rpi/android_external_drm_hwcomposer" />
+
+    <!-- LineageOS replacements -->
+    <remove-project name="platform/external/swiftshader"/>
+    <project path="external/swiftshader" name="lineage-rpi/android_external_swiftshader" />
+</manifest>

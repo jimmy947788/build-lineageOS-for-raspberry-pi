@@ -33,7 +33,7 @@
 #### 自動編譯腳本
 ```bash
 # 下載腳本到程式碼目錄
-$ wget https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/build-lineage-rpi3.sh -O ~/lineageOS/build-lineage-rpi3.sh
+$ wget https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/scripts/build-lineageos-code-rpi3.sh -O ~/lineageOS/build-lineageos-code-rpi3.sh
 $ sudo ./build-lineage-rpi3.sh #編譯全部映像kernel ramdisk systemimage vendorimage
 $ sudo ./build-lineage-rpi3.sh kernel #單獨編譯linux kernel
 $ sudo ./build-lineage-rpi3.sh ramdisk #單獨編譯ramdisk

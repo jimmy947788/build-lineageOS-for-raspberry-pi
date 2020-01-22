@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 BUILD_IMG=$1
 if [ -z "$BUILD_IMG" ]
 then
