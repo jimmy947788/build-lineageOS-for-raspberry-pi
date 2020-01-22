@@ -44,19 +44,19 @@
    # --all 新分支包含所有的專案
    $ repo start lineageOS-rpi3 --all
    ```
-6. **Repo 常用指令**
-    ```bash
-    $ repo abandon <BRANCH_NAME> #刪除分支
-    $ repo branches #列出分支 
-    $ repo start <BRANCH_NAME> [<PROJECT_LIST>] #新增分支 [專案]
-    $ repo checkout <BRANCH_NAME> #切換分支 
-    ```
-    #### 參考文件
-    - [LineageOS 維基百科](https://zh.wikipedia.org/wiki/LineageOS)
-    - [LineageOS 官方網頁](https://www.lineageos.org/)
-    - [LineageOS 官方維基](https://wiki.lineageos.org/)
-    - [LineageOS Github](https://github.com/LineageOS/)
-    - [Raspberry Pi 3 Model B+ 規格](https://www.raspberrypi.com.tw/10684/55/)
-    - [LineageOS的所有分支](https://github.com/LineageOS/android/branches/all)
-    - [Repo 命令参考资料](https://source.android.google.cn/setup/using-repo.html)
-    - [Android Local Manifests机制的使用实践](https://duanqz.github.io/2016-04-15-Android-Local-Manifests-Practice)
+#### Repo 常用指令**
+```bash
+$ repo abandon <BRANCH_NAME> #刪除分支
+$ repo branches #列出分支 
+$ repo start <BRANCH_NAME> [<PROJECT_LIST>] #新增分支 [專案]
+$ repo checkout <BRANCH_NAME> #切換分支 
+```
+#### 參考文件
+ - [LineageOS 維基百科](https://zh.wikipedia.org/wiki/LineageOS)
+ - [LineageOS 官方網頁](https://www.lineageos.org/)
+ - [LineageOS 官方維基](https://wiki.lineageos.org/)
+ - [LineageOS Github](https://github.com/LineageOS/)
+ - [Raspberry Pi 3 Model B+ 規格](https://www.raspberrypi.com.tw/10684/55/)
+ - [LineageOS的所有分支](https://github.com/LineageOS/android/branches/all)
+ - [Repo 命令参考资料](https://source.android.google.cn/setup/using-repo.html)
+ - [Android Local Manifests机制的使用实践](https://duanqz.github.io/2016-04-15-Android-Local-Manifests-Practice)
