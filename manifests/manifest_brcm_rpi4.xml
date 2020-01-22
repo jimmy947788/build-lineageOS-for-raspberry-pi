@@ -13,6 +13,7 @@
 
     <!-- LineageOS additions -->
     <project path="external/i2c-tools" name="lineage-rpi/android_external_i2c-tools" />
+    <remove-project name="external/libdrm"/>
     <project path="external/libdrm" name="lineage-rpi/android_external_libdrm" />
     <project path="external/mesa3d" name="lineage-rpi/android_external_mesa3d" />
     <project path="external/minigbm" name="lineage-rpi/android_external_minigbm" />
