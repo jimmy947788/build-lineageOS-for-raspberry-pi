@@ -93,10 +93,14 @@ then
     mkdir $LINEAGEOS_DIR
 fi
 
+# 進入lineageOS程式碼目錄
+# ===========================================================
+cd $LINEAGEOS_DIR
+echo "Current path is $LINEAGEOS_DIR"
+
 
 # 設定 git global user.name
 # ===========================================================
-cd $LINEAGEOS_DIR
 if [ -z $(git config --global user.name) ] 
 then
     git config --global user.name "$GIT_USER_NAME"        
@@ -114,6 +118,12 @@ echo "your git global user.email is $(git config --global user.email)"
 # 初始化repository的分支
 # ===========================================================
 repo init -u git://github.com/LineageOS/android.git -b $GIT_BRANCH
+
+# 加入raspberry pi額外專案
+# ===========================================================
+mkdir $LINEAGEOS_DIR/.repo/local_manifests
+wget https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/manifests/manifest_brcm_rpi.xml -O $LINEAGEOS_DIR/.repo/local_manifests/manifest_brcm_rpi.xml
+
 
 # 開始下載程式碼
 # ===========================================================
