@@ -60,6 +60,10 @@ $ repo checkout <BRANCH_NAME> #切換分支
 # 下載腳本到程式碼目錄
 $ wget https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/scripts/sync-lineageos-code.sh -O ~/sync-lineageos-code.sh
 $ ./sync-lineageos-code.sh
+# 提示輸入 lineageOS 程式碼目錄
+# 提示輸入 lineageOS branch
+# 提示輸入 git global user.name
+# 提示輸入 git global user.email
 ```
 
 #### 參考文件
