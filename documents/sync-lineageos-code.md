@@ -44,7 +44,7 @@
    # --all 新分支包含所有的專案
    $ repo start lineageOS-rpi3 --all
    ```
-#### Repo 常用指令**
+#### Repo 常用指令
 ```bash
 $ repo abandon <BRANCH_NAME> #刪除分支
 $ repo branches #列出分支 

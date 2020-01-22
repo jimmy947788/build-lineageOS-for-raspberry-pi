@@ -30,7 +30,7 @@
     $ cd ~/lineageOS/device/brcm/rpi3/
     $ sudo ./mkimg.sh
     ```
-6. **自動編譯腳本**
+#### 自動編譯腳本
     ```bash
     # 下載腳本到程式碼目錄
     $ wget https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/build-lineage-rpi3.sh -O ~/lineageOS/build-lineage-rpi3.sh
@@ -42,7 +42,7 @@
     ```
     可燒錄映像最後輸出
     ~/lineageOS/out/target/product/rpi3/lineage-15.1-{date}-rpi3.img
-7. **燒錄映像到SD卡**
+#### 燒錄映像到SD卡
     ```bash
     $ sudo dd if=lineage-15.1-{date}-rpi3.img of=/dev/sdX status=progress bs=4M
     ```
