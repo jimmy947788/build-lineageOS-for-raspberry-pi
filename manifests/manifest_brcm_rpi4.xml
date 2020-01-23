@@ -20,7 +20,6 @@
     <project path="external/minigbm" name="lineage-rpi/android_external_minigbm" revision="lineage-16.0"/>
     <project path="external/drm/hwcomposer" name="lineage-rpi/android_external_drm_hwcomposer"  revision="lineage-16.0"/>
 
-
     <!-- LineageOS replacements -->
     <remove-project name="platform/external/libdrm"/>
     <project path="external/libdrm" name="lineage-rpi/android_external_libdrm" revision="lineage-16.0"/>
