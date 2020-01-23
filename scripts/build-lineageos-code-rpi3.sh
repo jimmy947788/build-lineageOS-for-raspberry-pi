@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source $HOME/.profile
 echo "Entry LineageOS source code folder: $LINEAGEOS_DIR"
 cd $LINEAGEOS_DIR
 
