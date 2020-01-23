@@ -121,8 +121,16 @@ repo init -u git://github.com/LineageOS/android.git -b $GIT_BRANCH
 
 # 加入raspberry pi額外專案
 # ===========================================================
-mkdir $LINEAGEOS_DIR/.repo/local_manifests
-wget https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/manifests/manifest_brcm_rpi.xml -O $LINEAGEOS_DIR/.repo/local_manifests/manifest_brcm_rpi.xml
+if [ ! -d $LINEAGEOS_DIR/.repo/local_manifests ] 
+then
+    mkdir $LINEAGEOS_DIR/.repo/local_manifests
+fi 
+
+if [ "$GIT_BRANCH" == "lineage-15.1" ] 
+    wget https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/manifests/manifest_brcm_rpi3.xml -O $LINEAGEOS_DIR/.repo/local_manifests/manifest_brcm_rpi3.xml
+elif [ "$GIT_BRANCH" == "lineage-16.0" ] 
+    wget https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/manifests/manifest_brcm_rpi4.xml -O $LINEAGEOS_DIR/.repo/local_manifests/manifest_brcm_rpi4.xml
+then
 
 
 # 開始下載程式碼
