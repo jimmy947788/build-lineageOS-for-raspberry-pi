@@ -101,7 +101,7 @@ echo "Current path is $LINEAGEOS_DIR"
 
 # 設定 git global user.name
 # ===========================================================
-if [ -z $(git config --global user.name) ] 
+if [[ -z $(git config --global user.name) ]] 
 then
     git config --global user.name "$GIT_USER_NAME"        
 fi
@@ -109,7 +109,7 @@ echo "your git global user.name is $(git config --global user.name)"
 
 # 設定 git global user.email
 # ===========================================================
-if [ -z $(git config --global user.email) ] 
+if [[ -z $(git config --global user.email) ]] 
 then
     git config --global user.email "$GIT_USER_EMAIL"
 fi
@@ -127,10 +127,12 @@ then
 fi 
 
 if [ "$GIT_BRANCH" == "lineage-15.1" ] 
-    wget https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/manifests/manifest_brcm_rpi3.xml -O $LINEAGEOS_DIR/.repo/local_manifests/manifest_brcm_rpi3.xml
-elif [ "$GIT_BRANCH" == "lineage-16.0" ] 
-    wget https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/manifests/manifest_brcm_rpi4.xml -O $LINEAGEOS_DIR/.repo/local_manifests/manifest_brcm_rpi4.xml
 then
+    wget --no-check-certificate --no-cach https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/manifests/manifest_brcm_rpi3.xml -O $LINEAGEOS_DIR/.repo/local_manifests/manifest_brcm_rpi3.xml
+elif [ "$GIT_BRANCH" == "lineage-16.0" ] 
+then
+    wget --no-check-certificate --no-cach https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/manifests/manifest_brcm_rpi4.xml -O $LINEAGEOS_DIR/.repo/local_manifests/manifest_brcm_rpi4.xml
+fi
 
 
 # 開始下載程式碼
