@@ -13,7 +13,6 @@
     <!-- LineageOS additions -->
     <project path="external/i2c-tools" name="lineage-rpi/android_external_i2c-tools" revision="lineage-16.0"/>
     <project path="external/minigbm" name="lineage-rpi/android_external_minigbm" revision="lineage-16.0"/>
-    <project path="external/drm_hwcomposer" name="lineage-rpi/android_external_drm_hwcomposer"  revision="lineage-16.0"/>
 
     <!-- LineageOS drm_hwcomposer replacements -->
     <remove-project name="platform/external/drm_hwcomposer"/>
