@@ -4,10 +4,6 @@
     remote github已經是預設不用給了
     <remote name="gitgub" fetch="https://github.com/"/>
      -->
-    <!-- Raspberry Pi 3 
-    <project path="device/brcm/rpi3" name="lineage-rpi/android_device_brcm_rpi3" revision="lineage-15.1" />
-    <project path="kernel/brcm/rpi3" name="lineage-rpi/android_kernel_brcm_rpi3" revision="lineage-15.1" />    
-    -->
 
     <!-- Raspberry Pi 4 -->
     <project path="kernel/brcm/rpi4" name="lineage-rpi/android_kernel_brcm_rpi4" revision="lineage-16.0"/>
@@ -16,11 +12,18 @@
 
     <!-- LineageOS additions -->
     <project path="external/i2c-tools" name="lineage-rpi/android_external_i2c-tools" revision="lineage-16.0"/>
-    <project path="external/mesa3d" name="lineage-rpi/android_external_mesa3d" revision="lineage-16.0"/>
     <project path="external/minigbm" name="lineage-rpi/android_external_minigbm" revision="lineage-16.0"/>
-    <project path="external/drm/hwcomposer" name="lineage-rpi/android_external_drm_hwcomposer"  revision="lineage-16.0"/>
+    <project path="external/drm_hwcomposer" name="lineage-rpi/android_external_drm_hwcomposer"  revision="lineage-16.0"/>
 
-    <!-- LineageOS replacements -->
+    <!-- LineageOS drm_hwcomposer replacements -->
+    <remove-project name="platform/external/drm_hwcomposer"/>
+    <project path="external/drm_hwcomposer" name="lineage-rpi/android_external_drm_hwcomposer"  revision="lineage-16.0"/>
+    
+    <!-- LineageOS mesa3d replacements -->
+    <remove-project name="platform/external/mesa3d"/>
+    <project path="external/mesa3d" name="lineage-rpi/android_external_mesa3d" revision="lineage-16.0"/>
+
+     <!-- LineageOS libdrm replacements -->
     <remove-project name="platform/external/libdrm"/>
     <project path="external/libdrm" name="lineage-rpi/android_external_libdrm" revision="lineage-16.0"/>
 </manifest>
