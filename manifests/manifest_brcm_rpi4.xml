@@ -6,6 +6,7 @@
      -->
 
     <!-- Raspberry Pi 4 -->
+    <project path="kernel/brcm/rpi4" name="hkoosha/android_device_brcm_rpi4"/>
     <project path="kernel/brcm/rpi4" name="lineage-rpi/android_kernel_brcm_rpi4" revision="lineage-16.0"/>
 
     <project path="vendor/brcm" name="lineage-rpi/proprietary_vendor_brcm" revision="lineage-16.0"/>
