@@ -7,11 +7,27 @@
     ```
 2. **給編譯時期更多記憶體**
     ```bash
-    $ PATH=~/lineageOS/prebuilts/sdk/tools:$PATH
+    $ export PATH=~/lineageOS/prebuilts/sdk/tools:$PATH
     $ export JACK_SERVER_VM_ARGUMENTS="-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx4g"
     $ jack-admin kill-server && jack-admin start-server
     ```
-3. **載入編譯環境變數**
+3. **打上RPI3補丁**
+   1. rpi3: modify generic keyboard layout
+   ```bash
+   $ cd ~/lineageOS
+   $ curl --create-dirs -L -o patches/frameworks_base/0001-rpi3-modify-generic-keyboard-layout.patch -O -L https://raw.githubusercontent.com/lineage-rpi/android_local_manifest/lineage-15.1/patches/frameworks_base/0001-rpi3-modify-generic-keyboard-layout.patch
+   $ cd ~/lineageOS/frameworks/base
+   $ git am ~/lineageOS/patches/frameworks_base/0001-rpi3-modify-generic-keyboard-layout.patch
+   ```
+   2. disable adb authentication by default
+   ```bash
+   $ cd ~/lineageOS
+   $ curl --create-dirs -L -o patches/vendor_lineage/0001-disable-adb-authentication-by-default.patch -O -L https://raw.githubusercontent.com/lineage-rpi/android_local_manifest/lineage-15.1/patches/vendor_lineage/0001-disable-adb-authentication-by-default.patch
+   $ cd ~/lineageOS/vendor/lineage
+   $ git am ~/lineageOS/patches/vendor_lineage/0001-disable-adb-authentication-by-default.patch
+   ```
+
+4. **載入編譯環境變數**
     ```bash
     $ source build/envsetup.sh
     $ lunch lineage_rpi3-userdebug
@@ -21,11 +37,11 @@
        - user：发行版本
        - userdebug：部分调试版本
 
-4. **編譯全部專案**
+5. **編譯全部專案**
     ```bash
     $ make -j12 kernel ramdisk systemimage vendorimage
     ```
-5. **打包可以燒錄的映像檔**
+6. **打包可以燒錄的映像檔**
     ```bash
     $ cd ~/lineageOS/device/brcm/rpi3/
     $ sudo ./mkimg.sh

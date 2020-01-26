@@ -7,23 +7,18 @@ add_path_env(){
         echo "$NEW_PATH already in PATH environment variable !"
     else
         echo "export PATH=\$PATH:$NEW_PATH" >> $PROFILE_PATH
-        source $PROFILE_PATH
         echo "add $NEW_PATH in PATH environment variable !"
     fi
+    source $PROFILE_PATH
 }
 
-add_lineageOS_folder_env(){
-    NEW_PATH=$1
-    if grep -Fxq "export LINEAGEOS_DIR=$NEW_PATH" $PROFILE_PATH
-    then
-        echo "environment variable LINEAGEOS_DIR already exites, values is $LINEAGEOS_DIR"
-    else
-        echo "export LINEAGEOS_DIR=$NEW_PATH" >> $PROFILE_PATH
-        source $PROFILE_PATH
-        echo "environment variable LINEAGEOS_DIR not exites, add with values $LINEAGEOS_DIR"
-    fi
+write_env(){
+    local ENV_KEY=$1
+    local ENV_VAL=$2
+    #echo "${ENV_VAL////\\/}"
+    sed -i "/export $ENV_KEY=/d" $PROFILE_PATH
+    echo "export $ENV_KEY=$ENV_VAL" >> $PROFILE_PATH
 }
-
 
 BIN_DIR=$HOME/bin
 REPO_PATH=$BIN_DIR/repo
@@ -40,38 +35,58 @@ read_var_frm_input(){
     fi
     #echo $USER_INPUT
 }
+source $PROFILE_PATH
 # 指定lineageOS程式碼目錄
 # ===========================================================
 PROMPT_MSG="Please entry lineageOS checkout folder"
-DEFAULT_VAL="$HOME/lineageOS"
-read_var_frm_input "${PROMPT_MSG}" "${DEFAULT_VAL}"
-LINEAGEOS_DIR=$USER_INPUT
-echo "lineageOS checkout forder is $LINEAGEOS_DIR" 
-add_lineageOS_folder_env $LINEAGEOS_DIR
+if [[ -z $LINEAGE_SRC ]]
+then
+    LINEAGE_SRC="$HOME/lineageOS"
+fi
+read_var_frm_input "${PROMPT_MSG}" "${LINEAGE_SRC}"
+LINEAGE_SRC=$USER_INPUT
+echo "lineageOS checkout forder is $LINEAGE_SRC" 
+write_env "LINEAGE_SRC" $LINEAGE_SRC
 
 # 指定lineageOS 分支版本
 # ===========================================================
 PROMPT_MSG="Please entry checkout lineageOS branch"
-DEFAULT_VAL="lineage-15.1"
-read_var_frm_input "${PROMPT_MSG}" "${DEFAULT_VAL}"
-GIT_BRANCH=$USER_INPUT
-echo "lineageOS branch is $GIT_BRANCH"
+if [[ -z $LINEAGE_BRANCH ]]
+then
+    LINEAGE_BRANCH="lineage-15.1"
+fi
+read_var_frm_input "${PROMPT_MSG}" "${LINEAGE_BRANCH}"
+LINEAGE_BRANCH=$USER_INPUT
+echo "lineageOS branch is $LINEAGE_BRANCH"
+write_env "LINEAGE_BRANCH" $LINEAGE_BRANCH
 
 # 設定 git global user.name
 # ===========================================================
-PROMPT_MSG="Please entry your git global user.name"
-DEFAULT_VAL="Your Name"
-read_var_frm_input "${PROMPT_MSG}" "${DEFAULT_VAL}"
-GIT_USERNAME=$USER_INPUT
-echo "git global user.name=$GIT_USERNAME" 
+GIT_USER_NAME=$(git config --global user.name)
+if [[ -z $GIT_USER_NAME ]] 
+then 
+    PROMPT_MSG="Please entry your git global user.name"
+    DEFAULT_VAL="Your Name"
+    read_var_frm_input "${PROMPT_MSG}" "${DEFAULT_VAL}"
+    GIT_USER_NAME=$USER_INPUT
+    git config --global user.name "$GIT_USER_NAME" 
+else
+    echo "git global user.name=$GIT_USER_NAME" 
+fi
 
 # 設定 git global user.email
 # ===========================================================
-PROMPT_MSG="Please entry your git global user.email"
-DEFAULT_VAL="you@example.com"
-read_var_frm_input "${PROMPT_MSG}" "${DEFAULT_VAL}"
-GIT_USEREMAIL=$USER_INPUT
-echo "git global user.email=$GIT_USEREMAIL"
+GIT_USER_EMAIL=$(git config --global user.email)
+if [[ -z $GIT_USER_EMAIL ]] 
+then 
+    PROMPT_MSG="Please entry your git global user.email"
+    DEFAULT_VAL="Your email"
+    read_var_frm_input "${PROMPT_MSG}" "${DEFAULT_VAL}"
+    GIT_USER_EMAIL=$USER_INPUT
+    git config --global user.email "$GIT_USER_EMAIL" 
+else
+    echo "git global user.email=$GIT_USER_EMAIL" 
+fi
 
 
 # 下載Repo程式碼管理工具
@@ -88,52 +103,28 @@ fi
 
 # 建立lineageOS程式碼目錄
 # ===========================================================
-if [ ! -d $LINEAGEOS_DIR ] 
+if [ ! -d $LINEAGE_SRC ] 
 then
-    mkdir $LINEAGEOS_DIR
+    mkdir $LINEAGE_SRC
 fi
 
 # 進入lineageOS程式碼目錄
 # ===========================================================
-cd $LINEAGEOS_DIR
-echo "Current path is $LINEAGEOS_DIR"
-
-
-# 設定 git global user.name
-# ===========================================================
-if [[ -z $(git config --global user.name) ]] 
-then
-    git config --global user.name "$GIT_USER_NAME"        
-fi
-echo "your git global user.name is $(git config --global user.name)"
-
-# 設定 git global user.email
-# ===========================================================
-if [[ -z $(git config --global user.email) ]] 
-then
-    git config --global user.email "$GIT_USER_EMAIL"
-fi
-echo "your git global user.email is $(git config --global user.email)"
+cd $LINEAGE_SRC
+echo "entery to lineage source path : $LINEAGE_SRC"
 
 # 初始化repository的分支
 # ===========================================================
-repo init -u git://github.com/LineageOS/android.git -b $GIT_BRANCH
+echo "init LineageOS repository for $LINEAGE_BRANCH"
+repo init -u git://github.com/LineageOS/android.git -b $LINEAGE_BRANCH
 
-# 加入raspberry pi額外專案
+# 加入lineage-15.1 for pi3 模組
 # ===========================================================
-if [ ! -d $LINEAGEOS_DIR/.repo/local_manifests ] 
+if [ "$LINEAGE_BRANCH" == "lineage-15.1" ] 
 then
-    mkdir $LINEAGEOS_DIR/.repo/local_manifests
-fi 
-
-if [ "$GIT_BRANCH" == "lineage-15.1" ] 
-then
-    wget --no-check-certificate --no-cach https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/manifests/manifest_brcm_rpi3.xml -O $LINEAGEOS_DIR/.repo/local_manifests/manifest_brcm_rpi3.xml
-elif [ "$GIT_BRANCH" == "lineage-16.0" ] 
-then
-    wget --no-check-certificate --no-cach https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/manifests/manifest_brcm_rpi4.xml -O $LINEAGEOS_DIR/.repo/local_manifests/manifest_brcm_rpi4.xml
+    echo "get raspberry pi 3 device project for $LINEAGE_BRANCH"
+    curl --create-dirs -L -o .repo/local_manifests/manifest_brcm_rpi3.xml -O -L https://raw.githubusercontent.com/lineage-rpi/android_local_manifest/lineage-15.1/manifest_brcm_rpi3.xml
 fi
-
 
 # 開始下載程式碼
 # ===========================================================

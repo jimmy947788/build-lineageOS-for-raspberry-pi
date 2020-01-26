@@ -27,9 +27,10 @@
 <img src="./documents/images/introduction-to-rpi-15-638.jpg" alt="Raspberry Pi 3 Block Diagram" width="400px"/>
 
 ### **操作說明文件**
-- [下載 LineageOS 程式碼](./documents/sync-lineageos-code.md)
-- [編譯 LineageOS 程式碼](./documents/build-lineageos-code.md)
-- 打上RPI3補丁
++ [如何下載LineageOS程式碼](./documents/sync-lineageos-code.md)
+    - [自動化下載腳本](scripts/sync-lineageos-code.sh)
++ [如何編譯LineageOS程式碼](./documents/build-lineageos-code.md)
+  - [自動化編譯腳本](scripts/build-lineageos-code.sh)
 
 ### **Android客製化修改**
 - 修改預設系統設定
