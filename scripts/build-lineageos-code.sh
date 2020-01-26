@@ -1,11 +1,18 @@
 #!/bin/bash
 
-source $HOME/.profile
-echo "Entry LineageOS source code folder: $LINEAGEOS_DIR"
-cd $LINEAGEOS_DIR
+write_env(){
+    local ENV_KEY=$1
+    local ENV_VAL=$2
+    #echo "${ENV_VAL////\\/}"
+    sed -i "/export $ENV_KEY=/d" $PROFILE_PATH
+    echo "export $ENV_KEY=$ENV_VAL" >> $PROFILE_PATH
+}
 
-OUT_DIR="$LINEAGEOS_DIR/out"
-RPI3_OUT_DIR="$OUT_DIR/target/product/rpi3"
+PROFILE_PATH=$HOME/.profile
+
+source $PROFILE_PATH
+echo "Entry LineageOS source code folder: $LINEAGE_SRC"
+cd $LINEAGE_SRC
 
 BUILD_IMG=$1
 if [ -z "$BUILD_IMG" ]
@@ -26,15 +33,14 @@ else
     exit 1
 fi
 
-
 echo "set compiler cache enable."
-export USE_CCACHE=1
-export CCACHE_DIR=$HOME/.ccache
+write_env "USE_CCACHE" 1
+write_env "CCACHE_DIR" "$HOME/.ccache"
 ccache -M 50G
 
 echo "set compiler use memory ."
-JACK_ADMIN_PATH="prebuilts/sdk/tools/jack-admin"
-export JACK_SERVER_VM_ARGUMENTS="-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx4g"
+write_env "JACK_ADMIN_PATH" "$LINEAGE_SRC/prebuilts/sdk/tools/jack-admin"
+write_env "JACK_SERVER_VM_ARGUMENTS" "\"-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx4g\""
 $JACK_ADMIN_PATH kill-server && $JACK_ADMIN_PATH start-server
 
 source build/envsetup.sh
@@ -42,14 +48,14 @@ lunch lineage_rpi3-userdebug
 make -j12 $BUILD_IMG
 
 echo "remove old lineage-15.1-rpi3.img...."
-rm -f device/brcm/rpi3/lineage-15.1-*-rpi3.img
-rm -f $RPI3_OUT_DIR/lineage-15.1-*-rpi3.img
+rm -f $LINEAGE_SRC/device/brcm/rpi3/lineage-15.1-*-rpi3.img
+rm -f $LINEAGE_SRC/out/target/product/rpi3/lineage-15.1-*-rpi3.img
 
 echo "build new lineage-15.1-rpi3.img..."
-cd device/brcm/rpi3/
+cd $LINEAGE_SRC/device/brcm/rpi3/
 sudo sh mkimg.sh
 DATE=`date +%Y%m%d`
 IMGNAME="lineage-15.1-$DATE-rpi3.img"
-mv "$IMGNAME" "$RPI3_OUT_DIR/$IMGNAME"
+mv "$IMGNAME" "$LINEAGE_SRC/out/target/product/rpi3/$IMGNAME"
 echo "new image file is here: "
-echo "    $RPI3_OUT_DIR/$IMGNAME"
+echo "    $LINEAGE_SRC/out/target/product/rpi3/$IMGNAME"

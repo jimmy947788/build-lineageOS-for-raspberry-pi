@@ -49,12 +49,12 @@
 #### 自動編譯腳本
 ```bash
 # 下載腳本到程式碼目錄
-$ wget https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/scripts/build-lineageos-code-rpi3.sh -O ~/build-lineageos-code-rpi3.sh
-$ sudo ./build-lineage-rpi3.sh #編譯全部映像kernel ramdisk systemimage vendorimage
-$ sudo ./build-lineage-rpi3.sh kernel #單獨編譯linux kernel
-$ sudo ./build-lineage-rpi3.sh ramdisk #單獨編譯ramdisk
-$ sudo ./build-lineage-rpi3.sh systemimage #單獨編譯systemimage
-$ sudo ./build-lineage-rpi3.sh vendorimage #單獨編譯vendorimage
+$ wget https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/scripts/build-lineageos-code.sh -O ~/build-lineageos-code.sh
+$ sudo ./build-lineageos-code.sh #編譯全部映像kernel ramdisk systemimage vendorimage
+$ sudo ./build-lineageos-code.sh kernel #單獨編譯linux kernel
+$ sudo ./build-lineageos-code.sh ramdisk #單獨編譯ramdisk
+$ sudo ./build-lineageos-code.sh systemimage #單獨編譯systemimage
+$ sudo ./build-lineageos-code.sh vendorimage #單獨編譯vendorimage
 ```
 > 可燒錄映像最後輸出
 ~/lineageOS/out/target/product/rpi3/lineage-15.1-{date}-rpi3.img
