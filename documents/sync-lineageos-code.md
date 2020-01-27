@@ -43,9 +43,9 @@
    > Repo 1.9.1 開始要把新增的manifest_brcm_rpi3.xml放到指定目錄.repo/local_manifests下面。
 5. **建立一個新的分支** *(用這個分支開發)*
    ```bash
-   # 分支名稱:lineageOS-rpi3
+   # 分支名稱:<BRANCH_NAME>
    # --all 新分支包含所有的專案
-   $ repo start lineageOS-rpi3 --all
+   $ repo start <BRANCH_NAME> --all
    ```
 #### Repo 常用指令
 ```bash
@@ -53,6 +53,7 @@ $ repo abandon <BRANCH_NAME> #刪除分支
 $ repo branches #列出分支 
 $ repo start <BRANCH_NAME> [<PROJECT_LIST>] #新增分支 [專案]
 $ repo checkout <BRANCH_NAME> #切換分支 
+$ repo forall -vc "git reset --hard" #還原變更
 ```
 
 #### 自動下載腳本
