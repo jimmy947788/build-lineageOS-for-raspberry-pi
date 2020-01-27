@@ -118,12 +118,16 @@ echo "entery to lineage source path : $LINEAGE_SRC"
 echo "init LineageOS repository for $LINEAGE_BRANCH"
 repo init -u git://github.com/LineageOS/android.git -b $LINEAGE_BRANCH
 
-# 加入lineage-15.1 for pi3 模組
+# 下載lineage manifests額外專案檔案
 # ===========================================================
+GITHUB_MANIFESTS_CONTENT="https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/manifests"
 if [ "$LINEAGE_BRANCH" == "lineage-15.1" ] 
 then
     echo "get raspberry pi 3 device project for $LINEAGE_BRANCH"
-    curl --create-dirs -L -o .repo/local_manifests/manifest_brcm_rpi3.xml -O -L https://raw.githubusercontent.com/lineage-rpi/android_local_manifest/lineage-15.1/manifest_brcm_rpi3.xml
+    curl --create-dirs -L -o .repo/local_manifests/manifest_brcm_rpi3.xml -O -L $GITHUB_MANIFESTS_CONTENT/manifest_brcm_rpi3.xml
+elif [ "$LINEAGE_BRANCH" == "lineage-16.0" ] 
+    echo "get raspberry pi 4 device project for $LINEAGE_BRANCH"
+    curl --create-dirs -L -o .repo/local_manifests/manifest_brcm_rpi4.xml -O -L $GITHUB_MANIFESTS_CONTENT/manifest_brcm_rpi4.xml
 fi
 
 # 開始下載程式碼
