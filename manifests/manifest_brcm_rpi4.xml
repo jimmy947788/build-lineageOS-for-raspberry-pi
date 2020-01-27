@@ -1,29 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-    <!--
-    remote github已經是預設不用給了
-    <remote name="gitgub" fetch="https://github.com/"/>
-     -->
 
-    <!-- Raspberry Pi 4 -->
-    <project path="device/brcm/rpi4" name="hkoosha/android_device_brcm_rpi4" revision="master"/>
-    <project path="kernel/brcm/rpi4" name="lineage-rpi/android_kernel_brcm_rpi4" revision="lineage-16.0"/>
+    <remote name="lineage-rpi" fetch="git://github.com/lineage-rpi/" />
+    <remote name="lineageOS" fetch="git://github.com/lineageOS/" />
+    <remote name="rpi-droid"   fetch="https://gitlab.com/rpi-droid/rpi4/lineage" />
+    <remote name="jimmywu"   fetch="git://github.com/02047788a/" />
 
-    <project path="vendor/brcm" name="lineage-rpi/proprietary_vendor_brcm" revision="lineage-16.0"/>
-
-    <!-- LineageOS additions -->
-    <project path="external/i2c-tools" name="lineage-rpi/android_external_i2c-tools" revision="lineage-16.0"/>
-    <project path="external/minigbm" name="lineage-rpi/android_external_minigbm" revision="lineage-16.0"/>
-
-    <!-- LineageOS drm_hwcomposer replacements -->
-    <remove-project name="platform/external/drm_hwcomposer"/>
-    <project path="external/drm_hwcomposer" name="lineage-rpi/android_external_drm_hwcomposer"  revision="lineage-16.0"/>
+    <!-- Raspberry Pi 3 -->
+    <project path="device/brcm/rpi3" name="android_device_brcm_rpi3" remote="lineage-rpi" revision="lineage-15.1" />
+    <project path="device/brcm/rpi4" name="android_device_brcm_rpi4" remote="jimmywu"   revision="master"       />
+    <project path="vendor/brcm"      name="proprietary_vendor_brcm"  remote="lineage-rpi" revision="lineage-16.0"/>
+    <!-- <project path="hardware/rpi"     name="android_hardware_rpiˇ"    remote="rpi-droid" revision="cm-14.1" />-->
+    <project path="hardware/rpi"     name="android_hardware_rpi4"    remote="jimmywu" revision="master" />
     
-    <!-- LineageOS mesa3d replacements -->
-    <remove-project name="platform/external/mesa3d"/>
-    <project path="external/mesa3d" name="lineage-rpi/android_external_mesa3d" revision="lineage-16.0"/>
+    <!-- kernel -->
+    <project path="kernel/brcm/rpi3" name="android_kernel_brcm_rpi3" remote="lineage-rpi" revision="lineage-16.0" />
+    <project path="kernel/brcm/rpi4" name="android_kernel_brcm_rpi4" remote="lineage-rpi" revision="lineage-16.0" />
 
-     <!-- LineageOS libdrm replacements -->
+    <project path="prebuilts/lineage-sdk" name="android_prebuilts_lineage-sdk" remote="lineageOS" revision="lineage-16.0" />
+    <!-- LineageOS additions -->
+    <!-- <remove-project name="platform/external/i2c-tools"/> -->
+    <project path="external/i2c-tools" name="android_external_i2c-tools"      remote="lineage-rpi" revision="lineage-16.0"/>
+
+    <remove-project name="platform/external/mesa3d"/>
+    <project path="external/mesa3d"    name="android_external_mesa3d"         remote="lineage-rpi" revision="lineage-16.0"/>
+    
+    <!-- <remove-project name="platform/external/minigbm"/> -->
+    <project path="external/minigbm"   name="android_external_minigbm"        remote="lineage-rpi" revision="lineage-16.0"/>
+    
     <remove-project name="platform/external/libdrm"/>
-    <project path="external/libdrm" name="lineage-rpi/android_external_libdrm" revision="lineage-16.0"/>
+    <project path="external/libdrm"    name="android_external_libdrm"         remote="lineage-rpi" revision="lineage-16.0"/>
+    
+    <remove-project name="platform/external/drm_hwcomposer"/>
+    <project path="external/drm_hwcomposer" name="android_external_drm_hwcomposer" remote="lineage-rpi" revision="lineage-16.0"/>
+    
+    <remove-project name="platform/external/swiftshader"/>
+    <project path="external/swiftshader" name="android_external_swiftshader" remote="lineage-rpi" revision="lineage-15.1" />
+
 </manifest>
