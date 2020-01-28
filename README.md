@@ -41,3 +41,6 @@
 - 低記憶體設備啟用ZRAM
 - 低記憶體設備啟用LMDK
 - 變更螢幕尺寸大小
+
+### **參考資料**
+- [ARM Cortex-A系列（A53、A57、A73等）处理器性能分类与对比](https://blog.csdn.net/weixin_42229404/article/details/80865138)
