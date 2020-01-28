@@ -8,6 +8,7 @@ write_env(){
     echo "export $ENV_KEY=$ENV_VAL" >> $PROFILE_PATH
 }
 
+DEVICE_NAME="rpi3"
 PROFILE_PATH=$HOME/.profile
 
 source $PROFILE_PATH
@@ -44,18 +45,18 @@ write_env "JACK_SERVER_VM_ARGUMENTS" "\"-Dfile.encoding=UTF-8 -XX:+TieredCompila
 $JACK_ADMIN_PATH kill-server && $JACK_ADMIN_PATH start-server
 
 source build/envsetup.sh
-lunch lineage_rpi3-userdebug
+lunch lineage_$DEVICE_NAME-userdebug
 make -j12 $BUILD_IMG
 
-echo "remove old lineage-15.1-rpi3.img...."
-rm -f $LINEAGE_SRC/device/brcm/rpi3/lineage-15.1-*-rpi3.img
-rm -f $LINEAGE_SRC/out/target/product/rpi3/lineage-15.1-*-rpi3.img
+echo "remove old $LINEAGE_BRANCH-$DEVICE_NAME.img...."
+rm -f $LINEAGE_SRC/device/brcm/$DEVICE_NAME/$LINEAGE_BRANCH-*-$DEVICE_NAME.img
+rm -f $LINEAGE_SRC/out/target/product/$DEVICE_NAME/$LINEAGE_BRANCH-*-$DEVICE_NAME.img
 
-echo "build new lineage-15.1-rpi3.img..."
-cd $LINEAGE_SRC/device/brcm/rpi3/
+echo "build new $LINEAGE_BRANCH-$DEVICE_NAME.img..."
+cd $LINEAGE_SRC/device/brcm/$DEVICE_NAME/
 sudo sh mkimg.sh
 DATE=`date +%Y%m%d`
-IMGNAME="lineage-15.1-$DATE-rpi3.img"
-mv "$IMGNAME" "$LINEAGE_SRC/out/target/product/rpi3/$IMGNAME"
+IMGNAME="$LINEAGE_BRANCH-$DATE-$DEVICE_NAME.img"
+mv "$IMGNAME" "$LINEAGE_SRC/out/target/product/$DEVICE_NAME/$IMGNAME"
 echo "new image file is here: "
-echo "    $LINEAGE_SRC/out/target/product/rpi3/$IMGNAME"
+echo "    $LINEAGE_SRC/out/target/product/$DEVICE_NAME/$IMGNAME"
