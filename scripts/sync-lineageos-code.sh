@@ -125,8 +125,9 @@ if [ "$LINEAGE_BRANCH" == "lineage-15.1" ]
 then
     echo "get raspberry pi 3 device project for $LINEAGE_BRANCH"
     curl --create-dirs -L -o .repo/local_manifests/manifest_brcm_rpi3.xml -O -L $GITHUB_MANIFESTS_CONTENT/manifest_brcm_rpi3.xml
-elif [ "$LINEAGE_BRANCH" == "lineage-16.0" ] 
-then
+#elif [ "$LINEAGE_BRANCH" == "lineage-16.0" ] 
+#then
+else
     echo "get raspberry pi 4 device project for $LINEAGE_BRANCH"
     curl --create-dirs -L -o .repo/local_manifests/manifest_brcm_rpi4.xml -O -L $GITHUB_MANIFESTS_CONTENT/manifest_brcm_rpi4.xml
 fi
