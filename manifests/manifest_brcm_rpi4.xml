@@ -11,7 +11,7 @@
     <project path="device/brcm/rpi4" name="android_device_brcm_rpi4" remote="jimmywu"   revision="master"       />
     <project path="vendor/brcm"      name="proprietary_vendor_brcm"  remote="lineage-rpi" revision="lineage-16.0"/>
     <!-- <project path="hardware/rpi"     name="android_hardware_rpiˇ"    remote="rpi-droid" revision="cm-14.1" />-->
-    <project path="hardware/rpi"     name="android_hardware_rpi4"    remote="jimmywu" revision="master" />
+    <!-- <project path="hardware/rpi"     name="android_hardware_rpi4"    remote="jimmywu" revision="master" /> -->
     
     <!-- kernel -->
     <project path="kernel/brcm/rpi3" name="android_kernel_brcm_rpi3" remote="lineage-rpi" revision="lineage-16.0" />
