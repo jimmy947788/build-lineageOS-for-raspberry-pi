@@ -32,6 +32,7 @@
     $ source build/envsetup.sh
     $ lunch lineage_rpi3-userdebug
     ```
+    > 如果無法載入Device發生找不到，需要新增Device參考官方新增說明[連結](https://source.android.com/setup/develop/new-device#prod-def)
     - BUILDTYPE [參考](https://source.android.com/setup/build/building#choose-a-target)
        - eng：工程版本 
        - user：发行版本
