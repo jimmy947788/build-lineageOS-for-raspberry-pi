@@ -37,7 +37,7 @@ fi
 echo "set compiler cache enable."
 write_env "USE_CCACHE" 1
 write_env "CCACHE_DIR" "$HOME/.ccache"
-ccache -M 50G
+ccache -M 70G
 
 echo "set compiler use memory ."
 write_env "JACK_ADMIN_PATH" "$LINEAGE_SRC/prebuilts/sdk/tools/jack-admin"
@@ -45,7 +45,7 @@ write_env "JACK_SERVER_VM_ARGUMENTS" "\"-Dfile.encoding=UTF-8 -XX:+TieredCompila
 $JACK_ADMIN_PATH kill-server && $JACK_ADMIN_PATH start-server
 
 source build/envsetup.sh
-lunch lineage_$DEVICE_NAME-userdebug
+lunch lineage_rpi3-userdebug
 make -j12 $BUILD_IMG
 
 echo "remove old $LINEAGE_BRANCH-$DEVICE_NAME.img...."
