@@ -45,7 +45,7 @@ write_env "JACK_SERVER_VM_ARGUMENTS" "\"-Dfile.encoding=UTF-8 -XX:+TieredCompila
 $JACK_ADMIN_PATH kill-server && $JACK_ADMIN_PATH start-server
 
 source build/envsetup.sh
-lunch lineage_rpi3-userdebug
+lunch lineage_$DEVICE_NAME-userdebug
 make -j12 $BUILD_IMG
 
 echo "remove old $LINEAGE_BRANCH-$DEVICE_NAME.img...."
