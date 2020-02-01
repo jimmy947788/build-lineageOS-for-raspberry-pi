@@ -55,17 +55,7 @@ $ repo start <BRANCH_NAME> [<PROJECT_LIST>] #新增分支 [專案]
 $ repo checkout <BRANCH_NAME> #切換分支 
 $ repo forall -vc "git reset --hard" #還原變更
 ```
-
-#### 自動下載腳本
-```bash
-# 下載腳本到程式碼目錄
-$ wget https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/scripts/sync-lineageos-code.sh -O ~/sync-lineageos-code.sh
-$ ./sync-lineageos-code.sh
-# 提示輸入 lineageOS 程式碼目錄
-# 提示輸入 lineageOS branch
-# 提示輸入 git global user.name
-# 提示輸入 git global user.email
-```
+> Repo 命令参考资料 https://source.android.google.cn/setup/using-repo.html
 
 #### 參考文件
  - [LineageOS 維基百科](https://zh.wikipedia.org/wiki/LineageOS)
@@ -73,7 +63,6 @@ $ ./sync-lineageos-code.sh
  - [LineageOS 官方維基](https://wiki.lineageos.org/)
  - [LineageOS Github](https://github.com/LineageOS/)
  - [LineageOS-rpi Github](https://github.com/lineage-rpi)
- - [Raspberry Pi 3 Model B+ 規格](https://www.raspberrypi.com.tw/10684/55/)
-
- - [Repo 命令参考资料](https://source.android.google.cn/setup/using-repo.html)
+ - [LineageOS branches](https://github.com/LineageOS/android/branches/all)
+ - [Raspberry Pi 規格 (維基百科)](https://en.wikipedia.org/wiki/Raspberry_Pi#Specifications)
  - [Android Local Manifests机制的使用实践](https://duanqz.github.io/2016-04-15-Android-Local-Manifests-Practice)
