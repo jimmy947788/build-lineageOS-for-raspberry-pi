@@ -23,7 +23,7 @@
     # 在目前目錄初始化一個client端，指定repository分支lineage-15.1
     $ repo init -u git://github.com/LineageOS/android.git -b lineage-15.1
     ```
-    > LineageOS的所有分支 [all branches](https://github.com/LineageOS/android/branches/all)
+    > LineageOS 的所有分支請參閱 [github branches](https://github.com/LineageOS/android/branches/all)
     
 3. **下載程式碼**
    ```bash
