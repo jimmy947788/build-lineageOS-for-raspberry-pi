@@ -59,14 +59,14 @@
     > /dev/sdX 是你SD卡的路徑，注意要改阿!!!
 
 ### **Android客製化修改**
-- 修改預設系統設定
-- 不要安裝預設Apps
-- 預設啟動root權限
-- 略過開機設定精靈
-- 停用動態桌布
-- 低記憶體設備啟用ZRAM
-- 低記憶體設備啟用LMDK
-- 變更螢幕尺寸大小
+- [修改預設系統設定](features/01-modify-android-property.md)
+- [不要安裝預設Apps](features/02-dont-install-default-apps.md)
+- [預設啟動root權限](features/03-default-enable-roots.md)
+- [略過開機設定精靈](features/05-disable-setupwizard.md)
+- [停用動態桌布](features/07-disable-wallpaper-service.md)
+- [低記憶體設備啟用ZRAM](features/09-low-ram-use-zram.md)
+- [低記憶體設備啟用LMDK](features/10-low-ram-use-lmkd.md)
+- [變更螢幕尺寸大小](features/11-change-screen-size.md)
 
 ### **參考資料**
 - [ARM Cortex-A系列（A53、A57、A73等）处理器性能分类与对比](https://blog.csdn.net/weixin_42229404/article/details/80865138)
