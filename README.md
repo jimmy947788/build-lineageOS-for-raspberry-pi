@@ -28,9 +28,21 @@
 
 ### **操作說明文件**
 + [如何下載LineageOS程式碼](./documents/sync-lineageos-code.md)
-    - [自動化下載腳本](scripts/sync-lineageos-code.sh)
+    ```bash
+    #自動化下載腳本
+    $ wget https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/scripts/sync-lineageos-code.sh -O sync-lineageos-code.sh
+    # 執行腳本輸入提示
+    # Please entry lineageOS checkout folder : (下載目錄)
+    # Please entry checkout lineageOS branch : (指定分支)
+    # Please entry build device name(ex:,rpi3,rpi4) : (編譯模組)
+    ```
+
 + [如何編譯LineageOS程式碼](./documents/build-lineageos-code.md)
-  - [自動化編譯腳本](scripts/build-lineageos-code.sh)
+    ```bash
+    # 下載腳本到程式碼目錄
+    $ wget https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/scripts/build-lineageos-code.sh -O build-lineageos-code.sh
+    $ sudo ./build-lineageos-code.sh #編譯全部映像kernel ramdisk systemimage vendorimage
+    ```
 
 ### **Android客製化修改**
 - 修改預設系統設定
