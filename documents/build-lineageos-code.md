@@ -47,23 +47,11 @@
     $ cd ~/lineageOS/device/brcm/rpi3/
     $ sudo ./mkimg.sh
     ```
-> [lieageos 16 for rpi4](https://konstakang.com/devices/rpi4/LineageOS16.0/)用的 Linux kernel 4.19.95-v7l-g57175ec7c5d8 armv7l 
-#### 自動編譯腳本
-```bash
-# 下載腳本到程式碼目錄
-$ wget https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/scripts/build-lineageos-code.sh -O ~/build-lineageos-code.sh
-$ sudo ./build-lineageos-code.sh #編譯全部映像kernel ramdisk systemimage vendorimage
-$ sudo ./build-lineageos-code.sh kernel #單獨編譯linux kernel
-$ sudo ./build-lineageos-code.sh ramdisk #單獨編譯ramdisk
-$ sudo ./build-lineageos-code.sh systemimage #單獨編譯systemimage
-$ sudo ./build-lineageos-code.sh vendorimage #單獨編譯vendorimage
-```
-> 可燒錄映像最後輸出
-~/lineageOS/out/target/product/rpi3/lineage-15.1-{date}-rpi3.img
-#### 燒錄映像到SD卡
-```bash
-$ sudo dd if=lineage-15.1-{date}-rpi3.img of=/dev/sdX status=progress bs=4M
-```
+7. **燒錄映像到SD卡**
+    ```bash
+    $ sudo dd if=lineage-15.1-{date}-rpi3.img of=/dev/sdX status=progress bs=4M
+    ```
+    > /dev/sdX 是你SD卡的路徑，注意要改阿!!!
 
 #### 參考文件
 - [編譯版本 Using build variants](https://source.android.com/setup/develop/new-device#build-variants)

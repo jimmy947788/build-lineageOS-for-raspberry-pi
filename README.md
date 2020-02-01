@@ -44,8 +44,13 @@
     $ wget https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/scripts/build-lineageos-code.sh -O build-lineageos-code.sh
     $ sudo ./build-lineageos-code.sh #編譯全部映像kernel ramdisk systemimage vendorimage
     ```
-    > 編譯後產生可安裝的image路徑: \$LINEAGE_SRC/out/target/product/rpi4/**lineage-16.0-20200201-rpi4.img**
-
+    > 編譯後產生可安裝的image路徑: \$LINEAGE_SRC/out/target/product/rpi4/*lineage-16.0-20200201-rpi4.img**
++ 燒錄映像到SD卡
+    ```bash
+    $ sudo dd if=lineage-16.0-20200201-rpi4.img of=/dev/sdX status=progress bs=4M
+    ```
+    > /dev/sdX 是你SD卡的路徑，注意要改阿!!!
+    
 ### **Android客製化修改**
 - 修改預設系統設定
 - 不要安裝預設Apps
