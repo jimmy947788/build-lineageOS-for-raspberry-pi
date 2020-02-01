@@ -47,6 +47,7 @@
     $ cd ~/lineageOS/device/brcm/rpi3/
     $ sudo ./mkimg.sh
     ```
+> [lieageos 16 for rpi4](https://konstakang.com/devices/rpi4/LineageOS16.0/)用的 Linux kernel 4.19.95-v7l-g57175ec7c5d8 armv7l 
 #### 自動編譯腳本
 ```bash
 # 下載腳本到程式碼目錄

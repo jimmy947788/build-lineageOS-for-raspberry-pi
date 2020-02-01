@@ -60,6 +60,18 @@ LINEAGE_BRANCH=$USER_INPUT
 echo "lineageOS branch is $LINEAGE_BRANCH"
 write_env "LINEAGE_BRANCH" $LINEAGE_BRANCH
 
+# 指定lineageOS 分支版本
+# ===========================================================
+PROMPT_MSG="Please entry build device name(ex:,rpi3,rpi4)"
+if [[ -z $DEVICE_NAME ]]
+then
+    DEVICE_NAME=""
+fi
+read_var_frm_input "${PROMPT_MSG}" "${DEVICE_NAME}"
+DEVICE_NAME=$USER_INPUT
+#echo "build device name is $DEVICE_NAME"
+write_env "DEVICE_NAME" $DEVICE_NAME
+
 # 設定 git global user.name
 # ===========================================================
 GIT_USER_NAME=$(git config --global user.name)
@@ -120,16 +132,12 @@ repo init -u git://github.com/LineageOS/android.git -b $LINEAGE_BRANCH
 
 # 下載lineage manifests額外專案檔案
 # ===========================================================
-GITHUB_MANIFESTS_CONTENT="https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/manifests"
-if [ "$LINEAGE_BRANCH" == "lineage-15.1" ] 
+if [ "$DEVICE_NAME" -ne "none" ] 
 then
-    echo "get raspberry pi 3 device project for $LINEAGE_BRANCH"
-    curl --create-dirs -L -o .repo/local_manifests/manifest_brcm_rpi3.xml -O -L $GITHUB_MANIFESTS_CONTENT/manifest_brcm_rpi3.xml
-#elif [ "$LINEAGE_BRANCH" == "lineage-16.0" ] 
-#then
-else
-    echo "get raspberry pi 4 device project for $LINEAGE_BRANCH"
-    curl --create-dirs -L -o .repo/local_manifests/manifest_brcm_rpi4.xml -O -L $GITHUB_MANIFESTS_CONTENT/manifest_brcm_rpi4.xml
+    GITHUB_MANIFESTS_CONTENT="https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/manifests"
+    
+    echo "get $INEAGE_BRANCH manifests for $DEVICE_NAME"
+    curl --create-dirs -L -o .repo/local_manifests/manifest_brcm_$DEVICE_NAME.xml -O -L $GITHUB_MANIFESTS_CONTENT/manifest_brcm_$DEVICE_NAME.xml
 fi
 
 # 開始下載程式碼
