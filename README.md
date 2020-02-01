@@ -36,6 +36,7 @@
     # Please entry checkout lineageOS branch : (指定分支)
     # Please entry build device name(ex:,rpi3,rpi4) : (編譯模組)
     ```
+    > 輸入的變數都存在~/.profile 裡面 (**$LINEAGE_SRC, $LINEAGE_BRANCH, $DEVICE_NAME**)
 
 + [如何編譯LineageOS程式碼](./documents/build-lineageos-code.md)
     ```bash
@@ -43,6 +44,7 @@
     $ wget https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/scripts/build-lineageos-code.sh -O build-lineageos-code.sh
     $ sudo ./build-lineageos-code.sh #編譯全部映像kernel ramdisk systemimage vendorimage
     ```
+    > 編譯後產生可安裝的image路徑: \$LINEAGE_SRC/out/target/product/rpi4/**lineage-16.0-20200201-rpi4.img**
 
 ### **Android客製化修改**
 - 修改預設系統設定
