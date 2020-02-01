@@ -8,12 +8,18 @@ write_env(){
     echo "export $ENV_KEY=$ENV_VAL" >> $PROFILE_PATH
 }
 
-DEVICE_NAME="rpi3"
+#DEVICE_NAME="rpi3"
 PROFILE_PATH=$HOME/.profile
 
 source $PROFILE_PATH
 echo "Entry LineageOS source code folder: $LINEAGE_SRC"
 cd $LINEAGE_SRC
+
+if [ -z "$DEVICE_NAME" ]
+then
+    echo "you don't have set DEVICE_NAME, build failed..."
+    exit 1
+fi
 
 BUILD_IMG=$1
 if [ -z "$BUILD_IMG" ]
