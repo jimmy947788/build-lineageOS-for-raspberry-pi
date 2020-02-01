@@ -19,24 +19,31 @@
     
 
 ### **運行環境(Target)**
-- **Model:** Raspberry Pi Model 3B V1.2 
-- **SoC:** Broadcom BCM2837
-- **CPU:** ARM Cortex-A53 (64Bit)
-- **記憶體:** 1GB LPDDR2（和 GPU 共享）
-- **OS:** lineage 15.1 (Android 8.1.0) \
-<img src="./documents/images/introduction-to-rpi-15-638.jpg" alt="Raspberry Pi 3 Block Diagram" width="400px"/>
+- **Model:** Raspberry Pi 3 Model B+
+  - **SoC:** Broadcom BCM2837
+  - **CPU:** ARM Cortex-A53 (64Bit)
+  - **RAM:** 1GB 
+  - **OS:** lineage 15.1 (Android 8.1.0) \
+  <img src="./documents/images/introduction-to-rpi-15-638.jpg" alt="Raspberry Pi 3 Block Diagram" width="400px"/>
+- **Model:** Raspberry Pi 4 Model B 
+  - **SoC:** Broadcom BCM2711
+  - **CPU:** ARM Cortex-A72 (64Bit)
+  - **RAM:** 4GB
+  - **OS:** lineage 16.1 (Android 9)
 
 ### **操作說明文件**
 + [如何下載LineageOS程式碼](./documents/sync-lineageos-code.md)
-    ```bash
-    #自動化下載腳本
-    $ wget https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/scripts/sync-lineageos-code.sh -O sync-lineageos-code.sh
-    # 執行腳本輸入提示
-    # Please entry lineageOS checkout folder : (下載目錄)
-    # Please entry checkout lineageOS branch : (指定分支)
-    # Please entry build device name(ex:,rpi3,rpi4) : (編譯模組)
-    ```
-    > 輸入的變數都存在~/.profile 裡面 (**$LINEAGE_SRC, $LINEAGE_BRANCH, $DEVICE_NAME**)
+  - 支援 lineage-15.1 使用 rpi3
+  - 支援 lineage-16.0 使用 rpi4
+  ```bash
+  #自動化下載腳本
+  $ wget https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/scripts/sync-lineageos-code.sh -O sync-lineageos-code.sh
+  # 執行腳本輸入提示
+  # Please entry lineageOS checkout folder : (下載目錄)
+  # Please entry checkout lineageOS branch : (指定分支)
+  # Please entry build device name(ex:,rpi3,rpi4) : (編譯模組)
+  ```
+  > 輸入的變數都存在~/.profile 裡面 (**$LINEAGE_SRC, $LINEAGE_BRANCH, $DEVICE_NAME**)
 
 + [如何編譯LineageOS程式碼](./documents/build-lineageos-code.md)
     ```bash
@@ -50,7 +57,7 @@
     $ sudo dd if=lineage-16.0-20200201-rpi4.img of=/dev/sdX status=progress bs=4M
     ```
     > /dev/sdX 是你SD卡的路徑，注意要改阿!!!
-    
+
 ### **Android客製化修改**
 - 修改預設系統設定
 - 不要安裝預設Apps
