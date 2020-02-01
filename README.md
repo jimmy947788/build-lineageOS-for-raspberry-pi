@@ -68,5 +68,13 @@
 - [低記憶體設備啟用LMDK](features/10-low-ram-use-lmkd.md)
 - [變更螢幕尺寸大小](features/11-change-screen-size.md)
 
+### **相關專案**
+- [android_local_manifest](https://github.com/lineage-rpi/android_local_manifest) : lineage-rpi提供的說明專案
+- [android_device_brcm_rpi3](https://github.com/lineage-rpi/android_device_brcm_rpi3) : Android for RPI3相關硬體韌體設定
+- [android_device_brcm_rpi4](https://github.com/02047788a/android_device_brcm_rpi4) : Android for RPI4相關硬體韌體設定
+- [android_kernel_brcm_rpi3](https://github.com/lineage-rpi/android_kernel_brcm_rpi3) : Android for RPI3用的的linux核心
+- [android_kernel_brcm_rpi4](https://github.com/lineage-rpi/android_kernel_brcm_rpi4) : Android for RPI4用的的linux核心
+- [proprietary_vendor_brcm](https://github.com/lineage-rpi/proprietary_vendor_brcm) : RPI3/4 的 framware  
+
 ### **參考資料**
 - [ARM Cortex-A系列（A53、A57、A73等）处理器性能分类与对比](https://blog.csdn.net/weixin_42229404/article/details/80865138)
