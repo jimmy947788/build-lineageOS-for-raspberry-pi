@@ -62,10 +62,10 @@ write_env "LINEAGE_BRANCH" $LINEAGE_BRANCH
 
 # 指定lineageOS 分支版本
 # ===========================================================
-PROMPT_MSG="Please entry build device name(ex:,rpi3,rpi4)"
+PROMPT_MSG="Please entry build device name(ex:rpi3,rpi4)"
 if [[ -z $DEVICE_NAME ]]
 then
-    DEVICE_NAME=""
+    DEVICE_NAME="rpi3"
 fi
 read_var_frm_input "${PROMPT_MSG}" "${DEVICE_NAME}"
 DEVICE_NAME=$USER_INPUT
@@ -132,10 +132,9 @@ repo init -u git://github.com/LineageOS/android.git -b $LINEAGE_BRANCH
 
 # 下載lineage manifests額外專案檔案
 # ===========================================================
-if [ "$DEVICE_NAME" -ne "none" ] 
+if [ -z "$DEVICE_NAME" ]
 then
     GITHUB_MANIFESTS_CONTENT="https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/manifests"
-    
     echo "get $INEAGE_BRANCH manifests for $DEVICE_NAME"
     curl --create-dirs -L -o .repo/local_manifests/manifest_brcm_$DEVICE_NAME.xml -O -L $GITHUB_MANIFESTS_CONTENT/manifest_brcm_$DEVICE_NAME.xml
 fi
