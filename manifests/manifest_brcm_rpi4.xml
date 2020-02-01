@@ -6,15 +6,13 @@
     <remote name="rpi-droid"   fetch="https://gitlab.com/rpi-droid/rpi4/lineage" />
     <remote name="jimmywu"   fetch="git://github.com/02047788a/" />
 
-    <!-- Raspberry Pi 3 -->
-    <project path="device/brcm/rpi3" name="android_device_brcm_rpi3" remote="lineage-rpi" revision="lineage-15.1" />
+    <!-- Raspberry Pi -->
     <project path="device/brcm/rpi4" name="android_device_brcm_rpi4" remote="jimmywu"   revision="master"       />
     <project path="vendor/brcm"      name="proprietary_vendor_brcm"  remote="lineage-rpi" revision="lineage-16.0"/>
     <!-- <project path="hardware/rpi"     name="android_hardware_rpiˇ"    remote="rpi-droid" revision="cm-14.1" />-->
     <!-- <project path="hardware/rpi"     name="android_hardware_rpi4"    remote="jimmywu" revision="master" /> -->
     
     <!-- kernel -->
-    <project path="kernel/brcm/rpi3" name="android_kernel_brcm_rpi3" remote="lineage-rpi" revision="lineage-16.0" />
     <project path="kernel/brcm/rpi4" name="android_kernel_brcm_rpi4" remote="lineage-rpi" revision="lineage-16.0" />
 
     <project path="prebuilts/lineage-sdk" name="android_prebuilts_lineage-sdk" remote="lineageOS" revision="lineage-16.0" />
