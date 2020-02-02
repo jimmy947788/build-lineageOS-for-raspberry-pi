@@ -16,7 +16,7 @@
     # 如果你電腦已經有安裝很多版本JDK，這裡指定要用哪一個版本的JDK
     $ sudo update-alternatives --config java
     ```
-    
+3. 建議此使用100G空間的SSD硬碟，否則下載和編譯會很久
 
 ### **運行環境(Target)**
 - **Model:** Raspberry Pi 3 Model B+
