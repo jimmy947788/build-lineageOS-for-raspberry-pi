@@ -132,7 +132,7 @@ repo init -u git://github.com/LineageOS/android.git -b $LINEAGE_BRANCH
 
 # 下載lineage manifests額外專案檔案
 # ===========================================================
-if [ -z "$DEVICE_NAME" ]
+if [ ! -z "$DEVICE_NAME" ]
 then
     GITHUB_MANIFESTS_CONTENT="https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/manifests"
     echo "get $INEAGE_BRANCH manifests for $DEVICE_NAME"
