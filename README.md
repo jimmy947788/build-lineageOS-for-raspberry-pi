@@ -16,7 +16,9 @@
     # 如果你電腦已經有安裝很多版本JDK，這裡指定要用哪一個版本的JDK
     $ sudo update-alternatives --config java
     ```
-3. 建議此使用100G空間的SSD硬碟，否則下載和編譯會很久
+4. 建議使用SSD硬碟(下載和編譯會等到死)
+   - lineage 15.1 程式碼機加上編譯後產出檔案約 70G
+   - lineage 16.0 程式碼機加上編譯後產出檔案約 140G
 
 ### **運行環境(Target)**
 - **Model:** Raspberry Pi 3 Model B+
@@ -33,8 +35,8 @@
 
 ### **操作說明文件**
 + [如何下載LineageOS程式碼](./documents/sync-lineageos-code.md)
-  - 支援 lineage-15.1 使用 rpi3
-  - 支援 lineage-16.0 使用 rpi4
+  - branch: lineage-15.1, Device name: rpi3
+  - branch: lineage-16.0, Device name: rpi4
   ```bash
   #自動化下載腳本
   $ wget https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/scripts/sync-lineageos-code.sh -O sync-lineageos-code.sh
