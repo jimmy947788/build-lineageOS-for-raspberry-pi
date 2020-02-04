@@ -34,7 +34,7 @@
   - **OS:** lineage 16.1 (Android 9)
 
 ### **操作說明文件**
-+ [如何下載LineageOS程式碼](./documents/sync-lineageos-code.md)
++ [如何下載LineageOS程式碼](documents/guideline/sync-lineageos-code.md)
   - branch: lineage-15.1, Device name: rpi3
   - branch: lineage-16.0, Device name: rpi4
   ```bash
@@ -47,7 +47,7 @@
   ```
   > 輸入的變數都存在~/.profile 裡面 (**$LINEAGE_SRC, $LINEAGE_BRANCH, $DEVICE_NAME**)
 
-+ [如何編譯LineageOS程式碼](./documents/build-lineageos-code.md)
++ [如何編譯LineageOS程式碼](documents/guideline/build-lineageos-code.md)
     ```bash
     # 下載腳本到程式碼目錄
     $ wget https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/scripts/build-lineageos-code.sh -O build-lineageos-code.sh
