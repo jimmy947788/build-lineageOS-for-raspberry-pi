@@ -1,9 +1,8 @@
-## Android系統在Production不用授權啟用adb root
+## Android系統在Production版本啟用root權限
 
-1. Disable production check \
+#### 1. Disable production check 
     Path: $LINEAGE_SRC/system/core/adb/services.cpp
     ```cpp
-    //
     void restart_root_service(int fd, void *cookie) {
         if (getuid() == 0) {
             WriteFdExactly(fd, "adbd is already running as root\n");
@@ -35,7 +34,7 @@
         }
     }
     ```
-2. don't drop privileges \
+#### 2. don't drop privileges 
     Path: $LINEAGE_SRC/system/core/adb/daemon/main.cpp
     ```cpp
     static bool should_drop_privileges() {
@@ -49,7 +48,7 @@
          */
     }
     ```
-3. auth not required \
+####  3. auth not required
     Path: $LINEAGE_SRC/system/core/adb/daemon/main.cpp
     ```cpp
     static bool adbd_main() {
@@ -71,7 +70,8 @@
          */
     }
     ```
-4. stop Selinux check \
+#### 4. stop Selinux enforcing 
+    for Lineage 16.0 
     Path: $LINEAGE_SRC/system/core/init/selinux.cpp
     ```cpp
     // TODO: remark this function
@@ -95,9 +95,25 @@
         return false;
     }
     ```
-5. add lineage.service.adb.root property \
+
+    for Lineage 15.1
+    Path: system/core/init/init.cpp
+    ```cpp
+    /*
+    static selinux_enforcing_status selinux_status_from_cmdline() {
+        ...
+    */
+    static bool selinux_is_enforcing(void)
+    {
+        return false; #新增
+    }
+    ```
+#### 6. add lineage.service.adb.root property 
     Path: $LINEAGE_SRC/device/brcm/rpi4/system.prop
     ```bash
     # others
     lineage.service.adb.root=1
     ```
+
+### 參考資料
+- [[Android系统打开user版本的root权限](https://blog.csdn.net/qq_33487044/article/details/85076001)

@@ -64,6 +64,7 @@
 - [修改預設系統設定](features/01-modify-android-property.md)
 - [不要安裝預設Apps](features/02-dont-install-default-apps.md)
 - [預設啟動root權限](features/03-default-enable-roots.md)
+- [Android系統在Production版本啟用root權限](documents/fetures/adb-auth-not-required-and-enable-root.md)
 - [略過開機設定精靈](features/05-disable-setupwizard.md)
 - [停用動態桌布](features/07-disable-wallpaper-service.md)
 - [低記憶體設備啟用ZRAM](features/09-low-ram-use-zram.md)
