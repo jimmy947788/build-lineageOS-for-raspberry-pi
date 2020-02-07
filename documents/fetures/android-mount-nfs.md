@@ -30,12 +30,12 @@ CONFIG_ROOT_NFS=y
 
 ### 3. android掛載NFS
 ```bash
-# busybox mount -t nfs -o nolock 192.168.1.50:/mnt/nfs-rpi /data/nfs-rpi //默認選擇vers=3
-# busybox mount -t nfs -o nolock,vers=2 192.168.1.50:/mnt/nfs-rpi /data/nfs-rpi
+# busybox mount -t nfs -o nolock {SERVER_IP}:/mnt/nfs-rpi /data/nfs-rpi //默認選擇vers=3
+# busybox mount -t nfs -o nolock,vers=2 {SERVER_IP}:/mnt/nfs-rpi /data/nfs-rpi
 or #默認vers=3
-# busybox mount -t nfs -o nolock,vers=3 192.168.1.50:/mnt/nfs-rpi /data/nfs-rpi
+# busybox mount -t nfs -o nolock,vers=3 {SERVER_IP}:/mnt/nfs-rpi /data/nfs-rpi
 or
-# busybox mount -t nfs -o nolock,vers=4 192.168.1.50:/mnt/nfs-rpi /data/nfs-rpi
+# busybox mount -t nfs -o nolock,vers=4 {SERVER_IP}:/mnt/nfs-rpi /data/nfs-rpi
 
 # busybox umount /data/nfs //卸載
 ```
