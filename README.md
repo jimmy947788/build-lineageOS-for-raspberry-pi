@@ -74,3 +74,11 @@
 
 ### **Reference**
 - [ARM Cortex-A series(A53, A57, A73, etc.) processor performance classification and comparison](https://blog.csdn.net/weixin_42229404/article/details/80865138)
+
+
+### 我想找類似的工作不知道有沒有台北的工作機會???
+- linkedin [連結](https://www.linkedin.com/in/daedalus1/)
+- YT教學 嵌入式系統 [連結](https://www.youtube.com/playlist?list=PLwy0WTzBokTPlLXfSy9exZkYoh5GDUv82)
+- YT教學 嵌入式驅動 [連結](https://www.youtube.com/playlist?list=PLwy0WTzBokTOB_8kEfzuVhTznK7q-GbVq)
+
+> 我也懂挖礦上一份工作是用linux整合客製化一套挖礦系統OS，我也親自破解claymopre & phinexminer的 
