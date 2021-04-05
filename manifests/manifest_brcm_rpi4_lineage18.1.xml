@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+    <remote name="lineage-rpi" fetch="git://github.com/lineage-rpi/" />
+    <remote name="jimmywu"   fetch="git://github.com/02047788a/" />
+
+    <!-- Raspberry Pi -->
+    <project path="device/brcm/rpi3" name="android_device_brcm_rpi3" remote="lineage-rpi" revision="lineage-17.1" />
+    <project path="device/brcm/rpi4" name="android_device_brcm_rpi4" remote="lineage-rpi" revision="lineage-17.1" />
+    <project path="device/brcm/rpi4-jimmy" name="android_device_brcm_rpi4" remote="jimmywu" revision="master" />
+    <project path="device/brcm/rpi-common" name="android_device_brcm_rpi-common" remote="lineage-rpi" revision="lineage-17.1" />
+    <project path="vendor/brcm"      name="proprietary_vendor_brcm"  remote="lineage-rpi" revision="lineage-18.1"/>
+    
+    <!-- linux kernal -->
+    <project path="kernel/brcm/rpi"      name="android_kernel_brcm_rpi" remote="lineage-rpi" revision="lineage-18.1" />
+    <project path="kernel/brcm/rpi-4.19" name="android_kernel_brcm_rpi" remote="lineage-rpi" revision="lineage-17.1-4.19" />
+
+    <!-- Graphics -->
+    <remove-project name="platform/external/mesa3d"/>
+    <project path="external/mesa3d"    name="android_external_mesa3d"         remote="lineage-rpi" revision="lineage-18.1"/>
+    <remove-project name="platform/external/drm_hwcomposer"/>
+    <project path="external/drm_hwcomposer" name="android_external_drm_hwcomposer" remote="lineage-rpi" revision="lineage-18.1"/>
+    <remove-project name="platform/external/libdrm"/>
+    <project path="external/libdrm"    name="android_external_libdrm"         remote="lineage-rpi" revision="lineage-17.1"/>
+    <remove-project name="platform/external/minigbm" />
+    <project path="external/minigbm"   name="android_external_minigbm"        remote="lineage-rpi" revision="lineage-18.1"/>
+    <project path="external/gbm_gralloc" name="android_external_gbm_gralloc" remote="lineage-rpi" revision="lineage-18.1" />
+    
+  
+    <!-- Misc additions -->
+    <project path="external/ir-keytable" name="android_external_ir-keytable" remote="lineage-rpi" revision="lineage-18.1" />
+    <project path="hardware/gps" name="android_hardware_gps" remote="lineage-rpi" revision="lineage-18.1"  />
+
+</manifest>
