@@ -137,13 +137,9 @@ then
     # ===========================================================
     if [ ! -z "$DEVICE_NAME" ]
     then
-        src="/home/jimmywu/Developer/Projects/build-lineageOS-for-raspberry-pi/manifests/manifest_brcm_rpi4_lineage18.1.xml"
-        des="$LINEAGE_SRC/.repo/local_manifests/manifest_brcm_$DEVICE_NAME.xml"
-        mkdir -p .repo/local_manifests
-        cp $src $des
-        #GITHUB_MANIFESTS_CONTENT="https://raw.githubusercontent.com/02047788a/build-lineageOS-rpi3/master/manifests"
-        #echo "get $INEAGE_BRANCH manifests for $DEVICE_NAME"
-        #curl --create-dirs -L -o .repo/local_manifests/manifest_brcm_$DEVICE_NAME.xml -O -L $GITHUB_MANIFESTS_CONTENT/manifest_brcm_$DEVICE_NAME.xml
+        GITHUB_MANIFESTS_CONTENT="https://raw.githubusercontent.com/02047788a/build-lineageOS-for-raspberry-pi/master/manifests/manifest_brcm_rpi4_lineage18.1.xml"
+        echo "get manifest_brcm_rpi4_lineage18.1.xml manifests"
+        curl --create-dirs -L -o .repo/local_manifests/manifest_brcm_$DEVICE_NAME.xml -O -L $GITHUB_MANIFESTS_CONTENT
     fi
 
 
