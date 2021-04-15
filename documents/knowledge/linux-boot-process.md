@@ -12,7 +12,7 @@ Raspberry Pi 是使用GPU來做bootloader，和其他Embedded板子用CPU來做b
 
 #### bootloader stage 1 (GPU負責)
 1. 讀取SD卡FAT32的boot磁碟分區。
-2. 載入 bootcode.bin *[註1]* 到 GPU L2 Cache。
+2. 載入 bootcode.bin [註1](https://github.com/02047788a/build-lineageOS-for-raspberry-pi/blob/master/documents/knowledge/linux-boot-process.md#%E5%82%99%E8%A8%BB) 到 GPU L2 Cache。
 3. GPU 從 L2 Cache 執行 bootcode.bin 。
 4. 開始進入bootloader stage 2 流程。
 > 樹梅派4之後把bootcode.bin 已經移到 EEPROM 裡面不靠檔案了[參考](https://www.raspberrypi.org/documentation/hardware/raspberrypi/booteeprom.md)
@@ -39,10 +39,10 @@ Raspberry Pi 是使用GPU來做bootloader，和其他Embedded板子用CPU來做b
 
 
 #### 備註
-- [註1] bootcode.bin 是引導加載程序( Stage 2 的流程內容程式) 
-- [註2] bootloader stage 1 這部份流程都寫在BCM2835無法修改，bootcode.bin[link](https://github.com/raspberrypi/firmware/tree/master/boot) 也不開放程式碼。
-- [註3] start.elf 是基礎 firmware，start_x.elf 包含 camera 驅動程式和編/解碼器 firmware，start_db.elf 是硬體debug 用的 firmware，start_cd.elf 是簡化版本不含支援編/解碼器和3D加速功能的硬件模組。
-- [註4] start4.elf, start4x.elf, start4cd.elf, and start4db.elf 是樹梅派4的firmware [參考](https://www.raspberrypi.org/documentation/configuration/boot_folder.md)
+1. bootcode.bin 是引導加載程序( Stage 2 的流程內容程式) 
+2. bootloader stage 1 這部份流程都寫在BCM2835無法修改，bootcode.bin [link](https://github.com/raspberrypi/firmware/tree/master/boot) 也不開放程式碼。
+3. start.elf 是基礎 firmware，start_x.elf 包含 camera 驅動程式和編/解碼器 firmware，start_db.elf 是硬體debug 用的 firmware，start_cd.elf 是簡化版本不含支援編/解碼器和3D加速功能的硬件模組。
+4. start4.elf, start4x.elf, start4cd.elf, and start4db.elf 是樹梅派4的firmware [參考](https://www.raspberrypi.org/documentation/configuration/boot_folder.md)
 
 ![asd](/documents/images/zo803Hq.png)
 #### 參考
