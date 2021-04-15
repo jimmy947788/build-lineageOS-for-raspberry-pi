@@ -11,19 +11,19 @@ Raspberry Pi 是使用GPU來做bootloader，和其他Embedded板子用CPU來做b
 4. VideoCore GPU 上的RISC core來負責bootloader運作。
 5. 進入 bootloader stage 1 。
 
-#### bootloader stage 1 (GPU負責)
+#### 開機 stage 1 (GPU負責)
 1. 掛載 SD 記憶卡上的 FAT32的boot磁碟分區。
 2. 載入 bootcode.bin (導加載程序) 到 GPU L2 Cache 。
 3. GPU 從 L2 Cache 執行 bootcode.bin 。
 4. 開始進入bootloader stage 2 流程。
 > 樹梅派4之後把bootcode.bin 已經移到 EEPROM 裡面不靠檔案了[參考](https://www.raspberrypi.org/documentation/hardware/raspberrypi/booteeprom.md)
 
-#### bootloader stage 2 (bootcode.bin負責)
+#### 開機 stage 2 (bootcode.bin負責)
 1. 啟動SDRAM
 2. 從SD記憶卡上的 FAT32的boot磁碟分區，載入start*.elf 到 VideoCore GPU 開機  [註2](https://github.com/02047788a/build-lineageOS-for-raspberry-pi/blob/master/documents/knowledge/linux-boot-process.md#%E5%82%99%E8%A8%BB) 
    - start4.elf, start4x.elf, start4cd.elf, and start4db.elf 是樹梅派4的[firmware](https://www.raspberrypi.org/documentation/configuration/boot_folder.md)
-3. 載入fixup*.dat用於配置GPU和CPU之間的SDRAM分區,重新整理GPU和CPU的記憶體因為接下來要準備轉移給CPU去運作系統了。
-(也配置zImage要使用的空間)
+3. 載入fixup*.dat用於配置GPU和CPU之間的SDRAM分區,重新整理GPU和CPU的記憶體因為接下來要準備轉移給CPU去運作系統了。(也配置zImage要使用的空間)
+> 此時如果看到彩虹splash 表示開始進入 stage 3 但是還沒進入 linux kernel
 
 
 #### bootloader stage 3 (start*.elf 負責)
