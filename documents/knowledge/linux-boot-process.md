@@ -21,7 +21,7 @@ Raspberry Pi 是使用GPU來做bootloader，和其他Embedded板子用CPU來做b
 1. 啟動SDRAM
 2. 讀取SD卡FAT32的boot磁碟分區
 3. 載入start*.elf並且執行
->  start*.elf 是樹梅派的firmware
+>  start4.elf, start4x.elf, start4cd.elf, and start4db.elf 是樹梅派4的firmware [參考](https://www.raspberrypi.org/documentation/configuration/boot_folder.md)
 
 #### bootloader stage 3 (start.elf)
 1. 載入fixup.dat用於配置GPU和CPU之間的SDRAM分區,重新整理GPU和CPU的記憶體因為接下來要準備轉移給CPU去運作系統了。
