@@ -1,7 +1,7 @@
 ## 開機啟動流程
 
 Raspberry Pi 是使用GPU來做bootloader，和其他Embedded板子用CPU來做bootloader不一樣。本身bootloader是不開放程式碼的。\
-![Boot process of Rapsberry Pi 3 Model B](/documents/images/rpi3b-boot-sequence.png) 
+![Boot process](/documents/images/zo803Hq.png) 
 > 官方的firmware專案就包含[bootloader](https://github.com/raspberrypi/firmware/tree/master/boot)
 
 #### PowerOn
@@ -20,7 +20,8 @@ Raspberry Pi 是使用GPU來做bootloader，和其他Embedded板子用CPU來做b
 #### bootloader stage 2 (bootcode.bin負責)
 1. 啟動SDRAM
 2. 讀取SD卡FAT32的boot磁碟分區
-3. 載入start*.elf並且執行
+3. 載入start*.elf並且執行  [註2](https://github.com/02047788a/build-lineageOS-for-raspberry-pi/blob/master/documents/knowledge/linux-boot-process.md#%E5%82%99%E8%A8%BB) 
+>  start4.elf, start4x.elf, start4cd.elf, and start4db.elf 是樹梅派4的[firmware](https://www.raspberrypi.org/documentation/configuration/boot_folder.md)
 
 #### bootloader stage 3 (start*.elf 負責)
 1. 載入fixup.dat用於配置GPU和CPU之間的SDRAM分區,重新整理GPU和CPU的記憶體因為接下來要準備轉移給CPU去運作系統了。
@@ -30,21 +31,16 @@ Raspberry Pi 是使用GPU來做bootloader，和其他Embedded板子用CPU來做b
 4. 載入zImage(linux kernel)
 5. 啟動 ARM core CPU
 6. 進入linux kernel
-> start.elf (GPU firmware) 
 
 #### linux kernel
 1. kernel 透過 cmdline.txt的參數initrd提供的位址去抓取ramdisk.img
 2. kernel 掛載基本檔案系統預備提供給Android使用
 3. kernel 掛載完成檔案系統後就會先執行init這隻程式(kernel\brcm\rpi3\init\main.c)
 
-
 #### 備註
-1. bootcode.bin 是引導加載程序( Stage 2 的流程內容程式) 
-2. bootloader stage 1 這部份流程都寫在BCM2835無法修改，bootcode.bin [link](https://github.com/raspberrypi/firmware/tree/master/boot) 也不開放程式碼。
-3. start.elf 是基礎 firmware，start_x.elf 包含 camera 驅動程式和編/解碼器 firmware，start_db.elf 是硬體debug 用的 firmware，start_cd.elf 是簡化版本不含支援編/解碼器和3D加速功能的硬件模組。
-4. start4.elf, start4x.elf, start4cd.elf, and start4db.elf 是樹梅派4的firmware [參考](https://www.raspberrypi.org/documentation/configuration/boot_folder.md)
+1. bootcode.bin 是引導加載程序( Stage 2 的流程內容程式) 這部份流程都寫在BCM2835無法修改，bootcode.bin 也不開放程式碼。
+2. start.elf 是基礎 firmware，start_x.elf 包含 camera 驅動程式和編/解碼器 firmware，start_db.elf 是硬體debug 用的 firmware，start_cd.elf 是簡化版本不含支援編/解碼器和3D加速功能的硬件模組。
 
-![asd](/documents/images/zo803Hq.png)
 #### 參考
 - [Raspberry Pi Releases BCM2835 Datasheet for ARM Peripherals](https://www.cnx-software.com/2012/02/07/raspberry-pi-releases-bcm2835-datasheet-for-arm-peripherals/) 
 - [Boot sequence](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bootmodes/bootflow.md)
