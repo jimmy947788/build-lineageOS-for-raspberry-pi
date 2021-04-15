@@ -13,15 +13,15 @@ Raspberry Pi 是使用GPU來做bootloader，和其他Embedded板子用CPU來做b
 #### bootloader stage 1 (GPU)
 1. 讀取SD卡FAT32的boot磁碟分區。
 2. 載入 bootcode.bin 到 GPU L2 Cache。
-2. GPU 從 L2 Cache 執行 bootcode.bin 。
-2. 開始進入bootloader stage 2 流程。
-> bootcode.bin 是引導加載程序( Stage 2 的流程內容程式) 
+3. GPU 從 L2 Cache 執行 bootcode.bin 。
+4. 開始進入bootloader stage 2 流程。
+> 樹梅派4之後把bootcode.bin 已經移到 EEPROM 裡面不靠檔案了[參考](https://www.raspberrypi.org/documentation/hardware/raspberrypi/booteeprom.md)
 
 #### bootloader stage 2 (bootcode.bin)
 1. 啟動SDRAM
 2. 讀取SD卡FAT32的boot磁碟分區
 3. 載入start*.elf並且執行
->  bootcode.bin (bootloader stage 2)
+>  start*.elf 是樹梅派的firmware
 
 #### bootloader stage 3 (start.elf)
 1. 載入fixup.dat用於配置GPU和CPU之間的SDRAM分區,重新整理GPU和CPU的記憶體因為接下來要準備轉移給CPU去運作系統了。
@@ -44,7 +44,8 @@ Raspberry Pi 是使用GPU來做bootloader，和其他Embedded板子用CPU來做b
 
 
 #### 註
-1.  stage 1 這部份流程都寫在BCM2835無法修改，bootcode.bin[link](https://github.com/raspberrypi/firmware/tree/master/boot) 也不開放程式碼。
+1. bootcode.bin 是引導加載程序( Stage 2 的流程內容程式) 
+2. bootloader stage 1 這部份流程都寫在BCM2835無法修改，bootcode.bin[link](https://github.com/raspberrypi/firmware/tree/master/boot) 也不開放程式碼。
 
 ![asd](/documents/images/zo803Hq.png)
 #### 參考
