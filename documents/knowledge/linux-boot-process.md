@@ -15,8 +15,7 @@ Raspberry Pi 是使用GPU來做bootloader，和其他Embedded板子用CPU來做b
 2. 載入 bootcode.bin 到 GPU L2 Cache。
 2. GPU 從 L2 Cache 執行 bootcode.bin 。
 2. 開始進入bootloader stage 2 流程。
-> bootcode.bin 是引導加載程序( Stage 2 的流程內容程式)
-> stage 1 這部份流程都寫在BCM2835無法修改，bootcode.bin[官方](https://github.com/raspberrypi/firmware/tree/master/boot) 也不開放程式碼
+> bootcode.bin 是引導加載程序( Stage 2 的流程內容程式) 
 
 #### bootloader stage 2 (bootcode.bin)
 1. 啟動SDRAM
@@ -44,7 +43,8 @@ Raspberry Pi 是使用GPU來做bootloader，和其他Embedded板子用CPU來做b
 
 
 
-
+#### 註
+1.  stage 1 這部份流程都寫在BCM2835無法修改，bootcode.bin[link](https://github.com/raspberrypi/firmware/tree/master/boot) 也不開放程式碼。
 
 ![asd](/documents/images/zo803Hq.png)
 #### 參考
