@@ -21,7 +21,7 @@ Raspberry Pi 是使用GPU來做bootloader，和其他Embedded板子用CPU來做b
 #### bootloader stage 2 (bootcode.bin負責)
 1. 啟動SDRAM
 2. 從SD記憶卡上的 FAT32的boot磁碟分區，載入start*.elf 到 VideoCore GPU 開機  [註2](https://github.com/02047788a/build-lineageOS-for-raspberry-pi/blob/master/documents/knowledge/linux-boot-process.md#%E5%82%99%E8%A8%BB) 
-　　2.1. start4.elf, start4x.elf, start4cd.elf, and start4db.elf 是樹梅派4的[firmware](https://www.raspberrypi.org/documentation/configuration/boot_folder.md)
+   - start4.elf, start4x.elf, start4cd.elf, and start4db.elf 是樹梅派4的[firmware](https://www.raspberrypi.org/documentation/configuration/boot_folder.md)
 3. 載入fixup*.dat用於配置GPU和CPU之間的SDRAM分區,重新整理GPU和CPU的記憶體因為接下來要準備轉移給CPU去運作系統了。
 (也配置zImage要使用的空間)
 
