@@ -41,7 +41,7 @@ Raspberry Pi 是使用GPU來做bootloader，和其他Embedded板子用CPU來做b
 #### 備註
 1. bootcode.bin 是引導加載程序( Stage 2 的流程內容程式) 這部份流程都寫在BCM2835無法修改，bootcode.bin 也不開放程式碼。
 2. start.elf 是基礎 firmware，start_x.elf 包含 camera 驅動程式和編/解碼器 firmware，start_db.elf 是硬體debug 用的 firmware，start_cd.elf 是簡化版本不含支援編/解碼器和3D加速功能的硬件模組。
-
+3. Minimal Raspberry Pi VPU firmware 程式碼 [github](https://github.com/christinaa/rpi-open-firmware)
 #### 參考
 - [Raspberry Pi Releases BCM2835 Datasheet for ARM Peripherals](https://www.cnx-software.com/2012/02/07/raspberry-pi-releases-bcm2835-datasheet-for-arm-peripherals/) 
 - [Boot sequence](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bootmodes/bootflow.md)
